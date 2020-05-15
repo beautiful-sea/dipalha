@@ -10,18 +10,18 @@ return [
             'name' => 'Default'
         ],
 
-         'dipalha' => [
-             'views_path' => 'resources/themes/velocity/views',
-             'assets_path' => 'public/themes/velocity/assets',
-             'name' => 'DiPalha',
-             'parent' => 'default'
-         ]
+//         'dipalha' => [
+//             'views_path' => 'resources/themes/velocity/views',
+//             'assets_path' => 'public/themes/velocity/assets',
+//             'name' => 'DiPalha',
+//             'parent' => 'default'
+//         ]
 
-//        'velocity' => [
-//            'views_path' => 'resources/themes/velocity/views',
-//            'assets_path' => 'public/themes/velocity/assets',
-//            'name' => 'Velocity',
-//            'parent' => 'default'
-//        ],
+        'velocity' => [
+            'views_path' => 'resources/themes/velocity/views',
+            'assets_path' => 'public/themes/velocity/assets',
+            'name' => 'Velocity',
+            'parent' => 'default'
+        ],
     ]
 ];

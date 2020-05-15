@@ -1,14 +1,7 @@
 <template>
-
-    <div :class="`row mb15 col-12 ${rowClass}`">
-        <div class="col-4 no-padding" v-if="tabs || viewAll || scrollable">
-            <h2 class="fs20 fw6">{{ headerHeading }}</h2>
-        </div>
-
-        <div class="col-12 no-padding" v-else >
-            <h2 class="fs20 fw6">{{ headerHeading }}</h2>
-        </div>
-
+    <div class="title-section mb-5">
+        <h2 class="text-uppercase" v-if="tabs || viewAll || scrollable">{{ headerHeading }}</h2>
+        <h2 class="text-uppercase" v-else>{{ headerHeading }}</h2>
         <div class="col-8 no-padding">
             <div class="row justify-content-end text-right">
 
