@@ -128,7 +128,6 @@ class ContentRepository extends Repository
     public function getAllContents()
     {
         $query = $this->model::orderBy('position', 'ASC');
-
         $contentCollection = $query
             ->select(
                 'velocity_contents.content_type',
@@ -144,7 +143,7 @@ class ContentRepository extends Repository
             ->get();
 
         $formattedContent = [];
-        
+
         foreach ($contentCollection as $content) {
             array_push($formattedContent, [
                 'title'        => $content->title,

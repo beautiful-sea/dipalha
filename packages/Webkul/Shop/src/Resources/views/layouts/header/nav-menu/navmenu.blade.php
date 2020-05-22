@@ -10,7 +10,6 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 }
 
 ?>
-
 <category-nav categories='@json($categories)' url="{{url()->to('/')}}"></category-nav>
 
 {!! view_render_event('bagisto.shop.layout.header.category.after') !!}

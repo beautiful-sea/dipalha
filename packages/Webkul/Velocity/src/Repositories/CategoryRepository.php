@@ -7,7 +7,7 @@ use Webkul\Core\Eloquent\Repository;
 use Webkul\Category\Repositories\CategoryRepository as Category;
 
 class CategoryRepository extends Repository
-{   
+{
    /**
     * Category Repository object
     *
@@ -54,12 +54,12 @@ class CategoryRepository extends Repository
         $velocityCategories = $this->model->all(['category_id']);
 
         $categoryMenues = json_decode(json_encode($velocityCategories), true);
-        
-        $categories = $this->categoryRepository->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id);
 
+        $categories = $this->categoryRepository->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id);
+        dd($categories);
         if (isset($categories->first()->id)) {
             foreach ($categories as $category) {
-                
+
                 if (! empty($categoryMenues) && !in_array($category->id, array_column($categoryMenues, 'category_id'))) {
                     $results[] = [
                         'id'   => $category->id,

@@ -19,7 +19,7 @@
                                             {{ __('velocity::app.responsive.header.greeting', ['customer' => auth()->guard('customer')->user()->first_name]) }}
                                         </a>
                                     @endauth
-                                    
+
                                     <i
                                         @click="closeDrawer()"
                                         class="material-icons pull-right text-dark">
@@ -60,7 +60,7 @@
                                         class="unset"
                                         v-text="content.title"
                                         :href="`${$root.baseUrl}/${content.page_link}`">
-                                    </a>
+                                    </a>FODASE
                                 </li>
                             </ul>
 
@@ -472,7 +472,7 @@
 
                 toggleMetaInfo: function (metaKey) {
                     this.rootCategories = ! this.rootCategories;
-                    
+
                     this[metaKey] = !this[metaKey];
                 },
 

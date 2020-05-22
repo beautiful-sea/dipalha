@@ -58,7 +58,7 @@
         @include('shop::UI.particals')
 
         <div id="app">
-            {{-- <responsive-sidebar v-html="responsiveSidebarTemplate"></responsive-sidebar> --}}
+            <responsive-sidebar v-html="responsiveSidebarTemplate"></responsive-sidebar>
 
             <product-quick-view v-if="$root.quickView"></product-quick-view>
 

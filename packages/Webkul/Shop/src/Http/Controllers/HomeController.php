@@ -43,6 +43,8 @@ use Webkul\Core\Repositories\SliderRepository;
           ->where('locale', $currentLocale->code)
           ->get()
           ->toArray();
+
+
         return view($this->_config['view'], compact('sliderData'));
     }
 
