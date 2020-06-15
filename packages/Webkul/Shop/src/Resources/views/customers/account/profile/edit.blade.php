@@ -51,9 +51,9 @@
 
                         <select name="gender" class="control" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.account.profile.gender') }}&quot;">
                             <option value=""  @if ($customer->gender == "") selected @endif></option>
-                            <option value="Other"  @if ($customer->gender == "Other") selected @endif>{{ __('shop::app.customer.account.profile.other') }}</option>
-                            <option value="Male"  @if ($customer->gender == "Male") selected @endif>{{ __('shop::app.customer.account.profile.male') }}</option>
-                            <option value="Female" @if ($customer->gender == "Female") selected @endif>{{ __('shop::app.customer.account.profile.female') }}</option>
+                            <option value="Outro"  @if ($customer->gender == "Outro") selected @endif>{{ __('shop::app.customer.account.profile.other') }}</option>
+                            <option value="Masculino"  @if ($customer->gender == "Masculino") selected @endif>{{ __('shop::app.customer.account.profile.male') }}</option>
+                            <option value="Feminino" @if ($customer->gender == "Feminino") selected @endif>{{ __('shop::app.customer.account.profile.female') }}</option>
                         </select>
                         <span class="control-error" v-if="errors.has('gender')">@{{ errors.first('gender') }}</span>
                     </div>
