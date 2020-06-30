@@ -1,0 +1,20 @@
+name: CI-CD
+on:
+  push:
+    branches: [production]
+
+jobs:
+  build-js-css:
+    name: Build JS CSS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm install
+      - run: npm run production
