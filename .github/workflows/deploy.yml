@@ -1,7 +1,7 @@
 name: CI-CD
 on:
   push:
-    branches: [production]
+    branches: [master]
 
 jobs:
   build-js-css:
@@ -18,4 +18,22 @@ jobs:
           node-version: "12.x"
       - run: npm install
       - run: npm run production
+
+      - name: Commit assets
+        run:
+          git config --local user.email "action@gihub.com"
+          git config --local user.name "GitHub Action"
+          git checkout -B deploy
+          git add -f public/
+          git commit -m "Build Front-End assets"
+          git push -f origin deploy
+
+      - name: Deploy to production server
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: 92.249.44.1
+          key: {{ secrets.SSH_PASSWORD }}
+          script: 'cd domains/dipalha.com/laravel && sh server_deploy.sh'
+
 
