@@ -34,5 +34,5 @@ jobs:
           username: u580802404
           host: 92.249.44.1
           port: 65002
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PASSWORD }}
           script: cd domains/dipalha.com/laravel && sh server_deploy.sh
