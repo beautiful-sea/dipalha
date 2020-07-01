@@ -20,7 +20,7 @@ jobs:
       - run: npm run production
 
       - name: Commit assets
-        run:
+        run:  |
           git config --local user.email "action@gihub.com"
           git config --local user.name "GitHub Action"
           git checkout -B deploy
