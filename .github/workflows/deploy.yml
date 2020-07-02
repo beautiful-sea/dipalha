@@ -34,6 +34,5 @@ jobs:
           username: u580802404
           host: '92.249.44.1'
           port: 65002
-#          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSPHRASE }}
           script: cd domains/dipalha.com/laravel && eval "$(ssh-agent -s)" &&  ssh-add ~/.ssh/id_rsa && sh server_deploy.sh
