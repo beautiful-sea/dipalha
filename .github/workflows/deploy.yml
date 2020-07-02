@@ -36,4 +36,4 @@ jobs:
           port: 65002
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: cd domains/dipalha.com/laravel && sh server_deploy.sh
+          script: cd domains/dipalha.com/laravel && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa && sh server_deploy.sh
