@@ -32,7 +32,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: u580802404
-          host: '92.249.44.1'
+          host: 92.249.44.1
           port: 65002
           password: ${{ secrets.SSH_PASSPHRASE }}
-          script: cd domains/dipalha.com/laravel && eval "$(ssh-agent -s)" &&  ssh-add ~/.ssh/id_rsa && sh server_deploy.sh
+          script: cd domains/dipalha.com/laravel && sh server_deploy.sh
