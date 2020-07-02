@@ -32,7 +32,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: u580802404
-          host: '92.249.44.1
+          host: '92.249.44.1'
 #          port: 65002
 #          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
