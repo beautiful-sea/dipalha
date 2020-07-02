@@ -18,6 +18,8 @@ jobs:
           node-version: "12.x"
       - run: npm install
       - run: npm run production
+      - run: cd packages\Webkul\Velocity
+      - run: npm run production
 
       - name: Commit assets
         run:  |
@@ -25,7 +27,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout -B deploy
           git add -f public/
-          git commit -m "Build Front-End assets"
+          git add -f resources/themes/velocity/
+          git commit -m "Build Front-End"
           git push -f origin deploy
 
       - name: Deploy to production server
