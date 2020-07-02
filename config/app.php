@@ -243,6 +243,8 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
+        //DIPALHA
+        Dipalha\Shop\Providers\ShopServiceProvider::class,
         //Webkul packages
         Webkul\Theme\Providers\ThemeServiceProvider::class,
         Webkul\User\Providers\UserServiceProvider::class,
