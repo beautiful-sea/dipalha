@@ -16,10 +16,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: npm install
-      - run: npm run production
-      - run: cd packages\Webkul\Velocity
-      - run: npm run production
+
+      - name: Install dependencies root
+        run: |
+          npm install
+          npm run production
+
+      - name: Install dependencies Velocity
+        working-directory: ./packages/Webkul/Velocity
+        run: |
+          npm install
+          npm run production
 
       - name: Commit assets
         run:  |
