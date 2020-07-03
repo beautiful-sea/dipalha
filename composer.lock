@@ -219,45 +219,7 @@
             ],
             "time": "2019-08-23T14:30:33+00:00"
         },
-        {
-            "name": "cagartner/bagisto-brazilcustomer",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cagartner/bagisto-brazilcustomer.git",
-                "reference": "641ae8647d8d30be58c2ed4d85268298159ccde5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cagartner/bagisto-brazilcustomer/zipball/641ae8647d8d30be58c2ed4d85268298159ccde5",
-                "reference": "641ae8647d8d30be58c2ed4d85268298159ccde5",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Cagartner\\BrazilCustomer\\Providers\\BrazilCustomerServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Cagartner\\BrazilCustomer\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Carlos Gartner",
-                    "email": "contato@carlosgartner.com.br"
-                }
-            ],
-            "time": "2020-04-21T21:14:17+00:00"
-        },
+
         {
             "name": "cagartner/bagisto-correios",
             "version": "0.2.0",
