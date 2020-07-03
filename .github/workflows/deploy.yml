@@ -35,6 +35,7 @@ jobs:
           git checkout -B deploy
           git add -f public/
           git add -f resources/themes/velocity/
+          git add .
           git commit -m "Build Front-End"
           git push -f origin deploy
 
