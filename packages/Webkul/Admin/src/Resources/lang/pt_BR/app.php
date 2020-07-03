@@ -1219,7 +1219,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Desenvolvido por <a href="https://bagisto.com/" target="_blank">Bagisto</a>, um projeto comunitário da <a href="https://webkul.com/" target="_blank">Webkul</a>'
+        'copy-right' => 'Desenvolvido por <a href="https://serradev.com.br/" target="_blank">Serra Development</a>'
     ],
 
     'admin' => [
