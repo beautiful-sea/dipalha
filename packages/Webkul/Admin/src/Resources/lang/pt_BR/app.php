@@ -13,13 +13,12 @@ return [
     'attribute' => 'Atributo',
     'actions' => 'Ações',
     'id' => 'ID',
-    'action' => 'açao',
+    'action' => 'ação',
     'yes' => 'sim',
     'no' => 'Não',
     'true' => 'Verdade',
     'false' => 'Falso',
     'apply' => 'Aplique',
-    'action' => 'Açao',
     'label' => 'Rótulo',
     'name' => 'Nome',
     'title' => 'Título',
@@ -138,7 +137,7 @@ return [
 
     'datagrid' => [
         'mass-ops' => [
-            'method-error' => 'Erro! Método errado detectado, por favor, verifique a configuração de ação em massa',
+            'method-error' => 'Método errado detectado, por favor, verifique a configuração de ação em massa',
             'delete-success' => 'O índice selecionado de :resource foi excluído com sucesso',
             'partial-action' => 'Algumas ações não foram executadas devido a restrições restritas do sistema em :resource',
             'update-success' => 'O índice selecionado :resource foram atualizados com sucesso',
@@ -312,7 +311,7 @@ return [
         'orders' => [
             'title' => 'Pedidos',
             'view-title' => 'Pedido #:order_id',
-            'cancel-btn-title' => 'Cancelas',
+            'cancel-btn-title' => 'Cancelar',
             'shipment-btn-title' => 'Enviar',
             'invoice-btn-title' => 'Faturar',
             'info' => 'Informação',
@@ -358,19 +357,18 @@ return [
             'total' => 'Total',
             'subtotal' => 'Subtotal',
             'shipping-handling' => 'Entrega & Manuseio',
-            'discount' => 'Discount',
+            'discount' => 'Desconto',
             'tax' => 'Imposto',
             'tax-percent' => 'Percentual Imposto',
             'tax-amount' => 'Valor de Imposto',
-            'discount-amount' => 'Discount Amount',
             'discount-amount' => 'Valor de Desconto',
             'grand-total' => 'Total',
             'total-paid' => 'Total Pago',
             'total-refunded' => 'Total Estornado',
             'total-due' => 'Total Devido',
             'cancel-confirm-msg' => 'Tem certeza que deseja cancelar esse pedido ?',
-            'refunds' => 'Refunds',
-            'refunded' => 'Refunded'
+            'refunds' => 'Extornar',
+            'refunded' => 'Extornado'
         ],
 
         'invoices' => [
@@ -444,7 +442,7 @@ return [
             'status' => 'Status',
             'action' => 'Açao',
             'view-title' => 'Reembolso #:refund_id',
-            'invalid-refund-amount-error' => 'Refund amount should be non zero.'
+            'invalid-refund-amount-error' => 'Quantidade reembolsada não pode ser zero.'
 
         ]
     ],
@@ -475,8 +473,6 @@ return [
             'price' => 'Preço',
             'weight' => 'Peso',
             'status' => 'Status',
-            'enabled' => 'Ativado',
-            'disabled' => 'Desativado',
             'add-variant-title' => 'Add Variação',
             'variant-already-exist-message' => 'Variante com as mesmas opções de atributo já existe.',
             'add-image-btn-title' => 'Add Imagem',
@@ -508,19 +504,18 @@ return [
             'searching' => 'Procurando ...',
             'grouped-products' => 'Produtos Agrupados',
             'search-products' => 'procurar produtos',
-            'no-result-found' => 'Produtos não encontrados com o mesmo nome.',
             'channel' => 'Canais',
             'bundle-items' => 'Itens do pacote',
             'add-option-btn-title' => 'Adicionar opção',
             'option-title' => 'Título da opção',
-            'input-type' => 'Input Type',
-            'is-required' => 'Is Required',
+            'input-type' => 'Tipo de campo',
+            'is-required' => 'Obrigatório',
             'select' => 'Select',
             'radio' => 'Radio',
             'checkbox' => 'Checkbox',
             'multiselect' => 'Multiselect',
-            'new-option' => 'New Option',
-            'is-default' => 'Is Default'
+            'new-option' => 'Nova Opção',
+            'is-default' => 'Default'
         ],
 
         'attributes' => [
@@ -557,7 +552,6 @@ return [
             'yes' => 'Sim',
             'no' => 'Não',
             'value_per_locale' => 'Valor Por Idioma',
-            'value_per_channel' => 'Valor Por Canal (Loja)',
             'value_per_channel' => 'Valor Por Canal (Loja)',
             'is_filterable' => 'Usar na navegação em camadas',
             'is_configurable' => 'Usar para Criar Produtos Configuráveis',
@@ -655,15 +649,14 @@ return [
             'save-btn-title' => 'Salvar Taxas de Imposto',
             'general' => 'Taxas de Imposto',
             'identifier' => 'Identificador',
-            'is_zip' => 'Ativar Range de CEP',
             'zip_from' => 'CEP de',
             'zip_to' => 'CEP para',
             'state' => 'Estado',
-            'select-state' => 'Selecione uma região, estado ou província.',
+            'select-state' => 'Selecione um estado.',
             'country' => 'País',
             'tax_rate' => 'Taxa',
             'edit' => [
-                'title' => 'Editae Taxas de Impostos',
+                'title' => 'Editar Taxas de Impostos',
                 'edit-button-title' => 'Editar Taxa'
             ],
             'zip_code' => 'CEP',
@@ -672,7 +665,7 @@ return [
 
         'sales' => [
             'shipping-method' => [
-                'title' => 'Método de Entregas',
+                'title' => 'Método de Entrega',
                 'save-btn-title' => 'Salvar',
                 'description' => 'Descrição',
                 'active' => 'Ativo',
@@ -686,7 +679,6 @@ return [
             'title' => 'Idiomas',
             'add-title' => 'Add Idioma',
             'edit-title' => 'Editar Idioma',
-            'add-title' => 'Add Idioma',
             'save-btn-title' => 'Salvar Idioma',
             'general' => 'Geral',
             'code' => 'Código',
@@ -727,7 +719,6 @@ return [
             'general' => 'Geral',
             'source_currency' => 'Moeda de Origem',
             'target_currency' => 'Moeda Alvo',
-            'rate' => 'Taxa',
             'exchange-class-not-found' => ':service de taxa de câmbio de serviço não encontrada',
             'update-rates' => 'Atualizar Tarifas',
             'rate' => 'Taxa',
@@ -745,7 +736,7 @@ return [
             'code' => 'Código',
             'name' => 'Nome',
             'description' => 'Descrição',
-            'source-is-active' => 'Origem é ativo',
+            'source-is-active' => 'Origem esta ativo',
             'contact-info' => 'Informação de Contato',
             'contact_name' => 'Nome',
             'contact_email' => 'Email',
@@ -769,7 +760,7 @@ return [
         'channels' => [
             'title' => 'Canais (Lojas)',
             'add-title' => 'Add Canal (Loja)',
-            'edit-title' => 'Edit Canal(Loja)',
+            'edit-title' => 'Editar Canal(Loja)',
             'save-btn-title' => 'Salvar Canal(Loja)',
             'general' => 'Geral',
             'code' => 'Código',
@@ -802,7 +793,7 @@ return [
 
         'sliders' => [
             'title' => 'Sliders',
-            'name' => 'Name',
+            'name' => 'Nome',
             'add-title' => 'Criar Slider',
             'edit-title' => 'Editar Slider',
             'save-btn-title' => 'Salvar Slider',
@@ -852,7 +843,7 @@ return [
             'zip_from' => 'CEP de',
             'zip_to' => 'CEP para',
             'state' => 'Estado',
-            'select-state' => 'Selecione uma região, estado ou província.',
+            'select-state' => 'Selecione um estado.',
             'country' => 'País',
             'tax_rate' => 'Taxa',
             'edit' => [
@@ -860,11 +851,10 @@ return [
                 'edit-button-title' => 'Editar Taxa'
             ],
             'zip_code' => 'CEP',
-            'is_zip' => 'Ativar Range de CEP',
             'create-success' => 'Taxas de Impostos Criada com Sucesso',
             'create-error' => 'Não foi Possível Criar a Taxa de Impostos',
             'update-success' => 'Taxas de Impostos Atualizadas com Sucesso',
-            'update-error' => 'Erro! Taxas de Impostos Não Poderam ser Atualizadas',
+            'update-error' => 'Taxas de Impostos Não Poderam ser Atualizadas',
             'delete' => 'Taxas de Impostos Excluídas com Sucesso',
             'atleast-one' => 'Não é Possível Excluir a Última Taxa de Impostos'
         ],
@@ -879,7 +869,6 @@ return [
             'edit-title' => 'Editar Grupo',
             'save-btn-title' => 'Salvar Grupo',
             'title' => 'Grupos',
-            'save-btn-title' => 'Salvar Grupo',
             'code' => 'Code',
             'name' => 'Nome',
             'is_user_defined' => 'Usuário Definido',
@@ -937,16 +926,15 @@ return [
             'save-btn-title' => 'Salvar Cliente',
             'channel_name' => 'Nome do Canal(Loja)',
             'state' => 'Estado',
-            'select-state' => 'Selecione uma região, estado ou província.',
+            'select-state' => 'Selecione um estado.',
             'country' => 'País',
-            'other' => 'Other',
+            'other' => 'Outro',
             'male' => 'Masculino',
             'female' => 'Feminino',
-            'phone' => 'Telefone',
-            'group-default' => 'Não possível excluir o grupo de cliente.',
+            'group-default' => 'Não foi possível excluir o grupo de cliente.',
             'edit-help-title' => 'Editar cliente',
             'delete-help-title' => 'Excluir cliente',
-            'addresses' => 'Addresses',
+            'addresses' => 'Endereços',
             'mass-destroy-success' => 'Clientes excluídos com sucesso',
             'mass-update-success' => 'Clientes atualizados com sucesso',
             'status' => 'Status',
@@ -972,9 +960,9 @@ return [
             'is_subscribed' => 'Inscrito',
             'edit-btn-title' => 'Atualizar inscrito',
             'update-success' => 'Inscrito foi atualizado com sucesso',
-            'update-failed' => 'Erro! Você não pode atualizar a inscrição desse usuário',
+            'update-failed' => 'Você não pode atualizar a inscrição desse usuário',
             'delete' => 'Inscrito foi excluído com sucesso',
-            'delete-failed' => 'Erro! Você não pode excluir a inscrição desse usuário',
+            'delete-failed' => 'Você não pode excluir a inscrição desse usuário',
         ]
     ],
 
@@ -1039,7 +1027,7 @@ return [
             'percentage-product-price' => 'Porcentagem do preço do produto',
             'fixed-amount' => 'Quantia fixa',
             'fixed-amount-whole-cart' => 'Montante fixo ao carrinho inteiro',
-            'buy-x-get-y-free' => 'Compre o X Get Y grátis',
+            'buy-x-get-y-free' => 'Compre X ganhe Y grátis',
             'discount-amount' => 'Valor do desconto',
             'discount-quantity' => 'Quantidade máxima permitida para desconto',
             'discount-step' => 'Comprar X Quantidade',
@@ -1058,7 +1046,7 @@ return [
             'cart-rule-not-defind-error' => 'A regra do carrinho não está definida',
             'mass-delete-success' => 'Todos os cupons selecionados foram excluídos com sucesso.',
             'end-other-rules' => 'Terminar outras regras',
-            'children-categories' => 'Categorias (Somente Crianças)',
+            'children-categories' => 'Categorias (Somente filhos)',
             'parent-categories' => 'Categorias (somente pai)',
             'categories' => 'Categorias',
             'attribute_family' => 'Família de Atributos'
@@ -1104,7 +1092,7 @@ return [
             'percentage-product-price' => 'Porcentagem do preço do produto',
             'fixed-amount' => 'Quantia fixa',
             'fixed-amount-whole-cart' => 'Montante fixo ao catálogo inteiro',
-            'buy-x-get-y-free' => 'Compre o X Get Y grátis',
+            'buy-x-get-y-free' => 'Compre X ganhe Y grátis',
             'discount-amount' => 'Valor do desconto',
             'mass-delete-success' => 'Todo o índice selecionado de cupons foi excluído com sucesso.',
             'end-other-rules' => 'Terminar outras regras',
@@ -1121,7 +1109,7 @@ return [
         '404' => [
             'page-title' => '404 Página não Encontrada',
             'name' => '404',
-            'title' => 'Página não Encontrad',
+            'title' => 'Página não Encontrada',
             'message' => 'A página que você está procurando não existe ou foi movida. Navegue usando o menu lateral.'
         ],
         '403' => [
@@ -1159,7 +1147,7 @@ return [
         'allowed-type' => 'Tipo permitido :',
         'file-type' => 'csv, xls, xlsx.',
         'no-records' => 'Nada para exportar',
-        'illegal-format' => 'Erro! Este tipo de formato não é suportado ou seu formato ilegal'
+        'illegal-format' => 'Este tipo de formato não é suportado ou seu formato ilegal'
     ],
 
     'cms' => [
@@ -1250,7 +1238,7 @@ return [
             'allow-guest-review' => 'Permitir comentários sem cadastro?',
             'inventory' => 'Inventário',
             'stock-options' => 'Opções de ações',
-            'allow-backorders' => 'Permitir Pedidos pelo Admin',
+            'allow-backorders' => 'Permitir pedidos pelo Admin',
             'customer' => 'Cliente',
             'settings' => 'Definições',
             'address' => 'Endereço',
@@ -1288,8 +1276,6 @@ return [
             'footer-toggle' => 'Alternar rodapé',
             'locale-options' => 'Opções de unidade',
             'weight-unit' => 'Unidade de peso',
-            'admin-page-limit' => 'Itens padrão por página (administrador)',
-            'design' => 'Design',
             'email-settings'    => 'Configurações de Email',
             'email-sender-name' => 'Nome do Email da Loja',
             'shop-email-from'   => 'Endereço de Email da Loja [Para enviar emails]',
@@ -1308,7 +1294,6 @@ return [
             'order-number-length' => 'Tamanho do Número do Pedido',
             'order-number-suffix' => 'Sufixo do Número de Pedido',
             'default' => 'Padrão',
-            'sandbox' => 'Sandbox',
             'all-channels' => 'Todos',
             'all-locales' => 'Todos',
             'sandbox' => 'Sandbox',
