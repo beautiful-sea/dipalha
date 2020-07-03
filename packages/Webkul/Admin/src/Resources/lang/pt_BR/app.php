@@ -73,7 +73,7 @@ return [
         'taxes' => 'Impostos',
         'tax-categories' => 'Categorias de Impostos',
         'tax-rates' => 'Impostos de Impostos',
-        'promotion' => 'Promoções',
+        'promotions' => 'Promoções',
         'discount' => 'Desconto',
         'cms' => 'CMS'
     ],
@@ -978,7 +978,7 @@ return [
         ]
     ],
 
-    'promotion' => [
+    'promotions' => [
         'cart-rules' => [
             'title' => 'Regras do carrinho',
             'add-title' => 'Adicionar regra de carrinho',
