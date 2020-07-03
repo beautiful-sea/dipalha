@@ -23,7 +23,7 @@ jobs:
           npm run production
 
       - name: Install dependencies Velocity
-        working-directory: ./packages/Webkul/Velocity
+        working-directory: packages/Webkul/Velocity
         run: |
           npm install
           npm run production
