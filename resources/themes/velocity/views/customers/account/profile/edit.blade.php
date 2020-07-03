@@ -66,7 +66,7 @@
 
                             <option value=""  @if ($customer->gender == "") selected @endif></option>
                             <option
-                                value="Other"
+                                value="Outro"
                                 @if ($customer->gender == "Other")
                                     selected="selected"
                                 @endif>
@@ -74,7 +74,7 @@
                             </option>
 
                             <option
-                                value="Male"
+                                value="Masculino"
                                 @if ($customer->gender == "Male")
                                     selected="selected"
                                 @endif>
@@ -82,7 +82,7 @@
                             </option>
 
                             <option
-                                value="Female"
+                                value="Feminino"
                                 @if ($customer->gender == "Female")
                                     selected="selected"
                                 @endif>
