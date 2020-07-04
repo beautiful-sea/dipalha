@@ -500,7 +500,7 @@ return [
             'order-summary' => 'Resumo do Pedido',
             'sub-total' => 'Itens',
             'grand-total' => 'Total',
-            'delivery-charges' => 'Taxas de Entrega',
+            'delivery-charges' => 'Taxa de Entrega',
             'tax' => 'Imposto',
             'discount' => 'Desconto',
             'price' => 'preço',
