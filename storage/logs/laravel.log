@@ -3186,3 +3186,20 @@
 #76 C:\\laragon\\www\\dipalha\\public\\index.php(74): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #77 {main}
 "} 
+[2020-07-04 23:17:26] local.ERROR: Command "optmize" is not defined.
+
+Did you mean one of these?
+    optimize
+    optimize:clear {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"optmize\" is not defined.
+
+Did you mean one of these?
+    optimize
+    optimize:clear at C:\\laragon\\www\\dipalha\\vendor\\symfony\\console\\Application.php:669)
+[stacktrace]
+#0 C:\\laragon\\www\\dipalha\\vendor\\symfony\\console\\Application.php(235): Symfony\\Component\\Console\\Application->find('optmize')
+#1 C:\\laragon\\www\\dipalha\\vendor\\symfony\\console\\Application.php(147): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\laragon\\www\\dipalha\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(93): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\laragon\\www\\dipalha\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\laragon\\www\\dipalha\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
