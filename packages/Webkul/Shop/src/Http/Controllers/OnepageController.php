@@ -106,7 +106,6 @@ class OnepageController extends Controller
         if (! auth()->guard('customer')->check() && ! Cart::getCart()->hasGuestCheckoutItems()) {
             return response()->json(['redirect_url' => route('customer.session.index')], 403);
         }
-
         $data['billing']['address1'] = implode(PHP_EOL, array_filter($data['billing']['address1']));
         $data['shipping']['address1'] = implode(PHP_EOL, array_filter($data['shipping']['address1']));
 
@@ -116,7 +115,7 @@ class OnepageController extends Controller
             $cart = Cart::getCart();
 
             Cart::collectTotals();
-
+//            return response()->json()
             if ($cart->haveStockableItems()) {
                 if (! $rates = Shipping::collectRates()) {
                     return response()->json(['redirect_url' => route('shop.checkout.cart.index')], 403);
