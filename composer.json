@@ -35,6 +35,7 @@
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
+        "lucascudo/laravel-pt-br-localization": "^1.1",
         "maatwebsite/excel": "3.1.18",
         "nwidart/laravel-modules": "^3.2",
         "prettus/l5-repository": "^2.6",

@@ -66,24 +66,24 @@
 
                             <option value=""  @if ($customer->gender == "") selected @endif></option>
                             <option
-                                value="Other"
-                                @if ($customer->gender == "Other")
+                                value="Outro"
+                                @if ($customer->gender == "Outro")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.other') }}
                             </option>
 
                             <option
-                                value="Male"
-                                @if ($customer->gender == "Male")
+                                value="Masculino"
+                                @if ($customer->gender == "Masculino")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.male') }}
                             </option>
 
                             <option
-                                value="Female"
-                                @if ($customer->gender == "Female")
+                                value="Feminino"
+                                @if ($customer->gender == "Feminino")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.female') }}
