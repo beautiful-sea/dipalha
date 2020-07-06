@@ -322,7 +322,7 @@ return [
             'order-date' => 'Data do Pedido',
             'order-status' => 'Status do Pedido',
             'order-status-canceled' => 'Cancelado',
-            'order-status-closed' => 'Fechados',
+            'order-status-closed' => 'Fechado',
             'order-status-fraud' => 'Fraude',
             'order-status-pending' => 'Pendente',
             'order-status-pending-payment' => 'Pagamento Pendente',
@@ -372,7 +372,7 @@ return [
         ],
 
         'invoices' => [
-            'title' => 'Faturas',
+            'title' => 'Fatura',
             'id' => 'Id',
             'invoice-id' => 'Fatura Id',
             'date' => 'Data da Fatura',
@@ -396,7 +396,7 @@ return [
         ],
 
         'shipments' => [
-            'title' => 'Entregas',
+            'title' => 'Entrega',
             'id' => 'Id',
             'date' => 'Data de Envio',
             'order-id' => 'Pedido Id',
@@ -423,7 +423,7 @@ return [
         ],
 
         'refunds' => [
-            'title' => 'Reembolsos',
+            'title' => 'Reembolso',
             'id' => 'Id',
             'add-title' => 'Criar reembolso',
             'save-btn-title' => 'Reembolso',
