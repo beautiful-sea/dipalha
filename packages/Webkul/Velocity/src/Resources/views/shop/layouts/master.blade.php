@@ -192,6 +192,15 @@
             type="text/javascript"
             src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
         </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171545359-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-171545359-1');
+        </script>
 
         @stack('scripts')
     </body>
