@@ -37,7 +37,7 @@
             :id="galleryCarouselId"
             pagination-enabled="hide"
             navigation-enabled="hide"
-            add-class="product-gallary"
+            add-class="product-gallery"
             :slides-count="thumbs.length">
 
             <slide :slot="`slide-${index}`" v-for="(thumb, index) in thumbs">
@@ -86,10 +86,12 @@
 
                 watch: {
                     'images': function(newVal, oldVal) {
-                        this.changeImage({
-                            largeImageUrl: this.images[0]['large_image_url'],
-                            originalImageUrl: this.images[0]['original_image_url'],
-                        })
+                        if (this.images[0]) {
+                            this.changeImage({
+                                largeImageUrl: this.images[0]['large_image_url'],
+                                originalImageUrl: this.images[0]['original_image_url'],
+                            })
+                        }
 
                         this.prepareThumbs()
                     }
@@ -146,5 +148,27 @@
                 }
             });
         })()
+    </script>
+
+    <script>
+        $(document).ready(() => {
+
+            /* waiting for the window to appear */
+            let waitForEl = function(selector, callback) {
+                if (jQuery(selector).length) {
+                    callback();
+                } else {
+                    setTimeout(function() {waitForEl(selector, callback);}, 100);
+                }
+            };
+
+            /* positioning when .zoomWindow div available */
+            waitForEl('.zoomWindow', function() {
+                if ($('body').hasClass("rtl")) {
+                    let widthOfImage = $('.zoomContainer').width();
+                    $('.zoomWindow').css('right', `${widthOfImage}px`);
+                }
+            });
+        });
     </script>
 @endpush

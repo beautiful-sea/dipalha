@@ -22,7 +22,7 @@
                 method="POST"
                 @submit.prevent="onSubmit"
                 class="account-table-content"
-                action="{{ route('customer.profile.edit') }}">
+                action="{{ route('customer.profile.store') }}">
                 @csrf
 
                 {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.before', ['customer' => $customer]) !!}
@@ -66,24 +66,24 @@
 
                             <option value=""  @if ($customer->gender == "") selected @endif></option>
                             <option
-                                value="Outro"
-                                @if ($customer->gender == "Outro")
+                                value="Other"
+                                @if ($customer->gender == "Other")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.other') }}
                             </option>
 
                             <option
-                                value="Masculino"
-                                @if ($customer->gender == "Masculino")
+                                value="Male"
+                                @if ($customer->gender == "Male")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.male') }}
                             </option>
 
                             <option
-                                value="Feminino"
-                                @if ($customer->gender == "Feminino")
+                                value="Female"
+                                @if ($customer->gender == "Female")
                                     selected="selected"
                                 @endif>
                                 {{ __('velocity::app.shop.gender.female') }}
@@ -155,6 +155,7 @@
                         <input
                             value=""
                             name="password"
+                            ref="password"
                             type="password"
                             v-validate="'min:6|max:18'" />
 

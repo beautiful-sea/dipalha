@@ -206,7 +206,7 @@
                 v-validate="'required'"
                 name="shipping[postcode]"
                 v-model="address.shipping.postcode"
-                @change="validateForm('address-form')"
+                @keyup="validateForm('address-form')"
                 data-vv-as="&quot;{{ __('shop::app.checkout.onepage.postcode') }}&quot;" />
 
             <span class="control-error" v-if="errors.has('address-form.shipping[postcode]')">
@@ -253,24 +253,24 @@
         @endauth
 
     @elseif (isset($billing) && $billing)
-{{--        <div :class="`col-12 form-field ${errors.has('address-form.billing[company_name]') ? 'has-error' : ''}`">--}}
-{{--            <label for="billing[company_name]">--}}
-{{--                {{ __('shop::app.checkout.onepage.company-name') }}--}}
-{{--            </label>--}}
+        <div :class="`col-12 form-field ${errors.has('address-form.billing[company_name]') ? 'has-error' : ''}`">
+            <label for="billing[company_name]">
+                {{ __('shop::app.checkout.onepage.company-name') }}
+            </label>
 
-{{--            <input--}}
-{{--                type="text"--}}
-{{--                class="control"--}}
-{{--                id="billing[company_name]"--}}
-{{--                name="billing[company_name]"--}}
-{{--                v-model="address.billing.company_name"--}}
-{{--                @change="validateForm('address-form')"--}}
-{{--                data-vv-as="&quot;{{ __('shop::app.checkout.onepage.company-name') }}&quot;" />--}}
+            <input
+                type="text"
+                class="control"
+                id="billing[company_name]"
+                name="billing[company_name]"
+                v-model="address.billing.company_name"
+                @change="validateForm('address-form')"
+                data-vv-as="&quot;{{ __('shop::app.checkout.onepage.company-name') }}&quot;" />
 
-{{--            <span class="control-error" v-if="errors.has('address-form.billing[company_name]')">--}}
-{{--                @{{ errors.first('address-form.billing[company_name]') }}--}}
-{{--            </span>--}}
-{{--        </div>--}}
+            <span class="control-error" v-if="errors.has('address-form.billing[company_name]')">
+                @{{ errors.first('address-form.billing[company_name]') }}
+            </span>
+        </div>
 
         <div :class="`col-12 form-field ${errors.has('address-form.billing[first_name]') ? 'has-error' : ''}`">
             <label for="billing[first_name]" class="mandatory">

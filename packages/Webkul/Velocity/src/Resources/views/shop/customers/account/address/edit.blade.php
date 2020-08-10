@@ -13,7 +13,7 @@
 
     {!! view_render_event('bagisto.shop.customers.account.address.edit.before', ['address' => $address]) !!}
 
-    <form method="post" action="{{ route('customer.address.edit', $address->id) }}" @submit.prevent="onSubmit">
+    <form method="post" action="{{ route('customer.address.update', $address->id) }}" @submit.prevent="onSubmit">
 
         <div class="account-table-content">
             @method('PUT')
@@ -23,11 +23,11 @@
 
             <?php $addresses = explode(PHP_EOL, (old('address1') ?? $address->address1)); ?>
 
-{{--            <div class="control-group" :class="[errors.has('company_name') ? 'has-error' : '']">--}}
-{{--                <label for="company_name">{{ __('shop::app.customer.account.address.edit.company_name') }}</label>--}}
-{{--                <input type="text"  class="control" name="company_name" value="{{ old('company_name') ?? $address->company_name }}" data-vv-as="&quot;{{ __('shop::app.customer.account.address.edit.company_name') }}&quot;">--}}
-{{--                <span class="control-error" v-if="errors.has('company_name')">@{{ errors.first('company_name') }}</span>--}}
-{{--            </div>--}}
+            <div class="control-group" :class="[errors.has('company_name') ? 'has-error' : '']">
+                <label for="company_name">{{ __('shop::app.customer.account.address.edit.company_name') }}</label>
+                <input type="text"  class="control" name="company_name" value="{{ old('company_name') ?? $address->company_name }}" data-vv-as="&quot;{{ __('shop::app.customer.account.address.edit.company_name') }}&quot;">
+                <span class="control-error" v-if="errors.has('company_name')">@{{ errors.first('company_name') }}</span>
+            </div>
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.company_name.after') !!}
 
@@ -47,13 +47,13 @@
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.last_name.after') !!}
 
-{{--            <div class="control-group" :class="[errors.has('vat_id') ? 'has-error' : '']">--}}
-{{--                <label for="vat_id">{{ __('shop::app.customer.account.address.create.vat_id') }}--}}
-{{--                    <span class="help-note">{{ __('shop::app.customer.account.address.create.vat_help_note') }}</span>--}}
-{{--                </label>--}}
-{{--                <input type="text" class="control" name="vat_id" value="{{ old('vat_id') ?? $address->vat_id }}" v-validate="" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.vat_id') }}&quot;">--}}
-{{--                <span class="control-error" v-if="errors.has('vat_id')">@{{ errors.first('vat_id') }}</span>--}}
-{{--            </div>--}}
+            <div class="control-group" :class="[errors.has('vat_id') ? 'has-error' : '']">
+                <label for="vat_id">{{ __('shop::app.customer.account.address.create.vat_id') }}
+                    <span class="help-note">{{ __('shop::app.customer.account.address.create.vat_help_note') }}</span>
+                </label>
+                <input type="text" class="control" name="vat_id" value="{{ old('vat_id') ?? $address->vat_id }}" v-validate="" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.vat_id') }}&quot;">
+                <span class="control-error" v-if="errors.has('vat_id')">@{{ errors.first('vat_id') }}</span>
+            </div>
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.vat_id.after') !!}
 
@@ -79,7 +79,7 @@
 
             <div class="control-group" :class="[errors.has('city') ? 'has-error' : '']">
                 <label for="city" class="mandatory">{{ __('shop::app.customer.account.address.create.city') }}</label>
-                <input type="text" class="control" name="city" value="{{ old('city') ?? $address->city }}" v-validate="'required|alpha_spaces'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.city') }}&quot;">
+                <input type="text" class="control" name="city" value="{{ old('city') ?? $address->city }}" v-validate="'required|regex:^[a-zA-Z \-]*$'" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.city') }}&quot;">
                 <span class="control-error" v-if="errors.has('city')">@{{ errors.first('city') }}</span>
             </div>
 

@@ -1,3 +1,10 @@
+@php
+    $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+    $velocityMetaData = $velocityHelper->getVelocityMetaData();
+    
+    view()->share('velocityMetaData', $velocityMetaData);
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -58,7 +65,7 @@
         @include('shop::UI.particals')
 
         <div id="app">
-            <responsive-sidebar v-html="responsiveSidebarTemplate"></responsive-sidebar>
+            {{-- <responsive-sidebar v-html="responsiveSidebarTemplate"></responsive-sidebar> --}}
 
             <product-quick-view v-if="$root.quickView"></product-quick-view>
 
@@ -82,6 +89,7 @@
                             url="{{ url()->to('/') }}"
                             :header-content="{{ json_encode($velocityContent) }}"
                             heading= "{{ __('velocity::app.menu-navbar.text-category') }}"
+                            category-count="{{ $velocityMetaData ? $velocityMetaData->sidebar_category_count : 10 }}"
                         ></content-header>
 
                         <div class="">
@@ -121,6 +129,10 @@
                     {!! view_render_event('bagisto.shop.layout.full-content.after') !!}
 
                 </div>
+            </div>
+
+            <div class="modal-parent" id="loader" style="top: 0" v-show="showPageLoader">
+                <overlay-loader :is-open="true"></overlay-loader>
             </div>
         </div>
 
@@ -191,15 +203,6 @@
         <script
             type="text/javascript"
             src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}">
-        </script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171545359-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-171545359-1');
         </script>
 
         @stack('scripts')

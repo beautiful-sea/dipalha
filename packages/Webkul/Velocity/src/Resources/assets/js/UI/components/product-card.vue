@@ -6,7 +6,7 @@
                     :src="product.image"
                     :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" />
 
-                <product-quick-view-btn :quick-view-details="product"></product-quick-view-btn>
+                <product-quick-view-btn :quick-view-details="product" v-if="!isMobile()"></product-quick-view-btn>
             </a>
         </div>
 
@@ -16,6 +16,10 @@
                     <a :href="`${baseUrl}/${product.slug}`" :title="product.name" class="unset">
                         <span class="fs16">{{ product.name }}</span>
                     </a>
+                </div>
+
+                <div class="sticker new" v-if="product.new">
+                    {{ product.new }}
                 </div>
 
                 <div class="product-price" v-html="product.priceHTML"></div>
@@ -55,8 +59,12 @@
                     :title="product.name"
                     :href="`${baseUrl}/${product.slug}`">
 
-                    <span class="fs16">{{ product.name }}</span>
+                    <span class="fs16">{{ product.name | truncate }}</span>
                 </a>
+            </div>
+
+            <div class="sticker new" v-if="product.new">
+                {{ product.new }}
             </div>
 
             <div class="product-price fs16" v-html="product.priceHTML"></div>
@@ -93,5 +101,15 @@
                 'addToCartHtml': '',
             }
         },
+
+        methods: {
+            'isMobile': function () {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 </script>
