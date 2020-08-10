@@ -71,7 +71,8 @@ return [
         'no-results' => 'Nenhum resultado encontrado',
         'page-title' => 'Buscar',
         'found-results' => 'Resultados da pesquisa encontrados',
-        'found-result' => 'Resultado da pesquisa encontrado'
+        'found-result' => 'Resultado da pesquisa encontrado',
+        'analysed-keywords' => 'Analysed Keywords'
     ],
 
     'reviews' => [
@@ -110,7 +111,7 @@ return [
             'conditions' => 'Condições',
             'using' => 'usando este site',
             'agreement' => 'Acordo',
-            'success' => 'Conta criada com sucesso, um e-mail foi enviado para sua verificação de conta',
+            'success' => 'Conta criado com sucesso, um e-mail foi enviado para sua verificação de conta',
             'success-verify-email-not-sent' => 'Conta criada com sucesso, mas o email de verificação não foi enviado',
             'failed' => 'Erro! Não é possível criar sua conta, tente novamente mais tarde',
             'already-verified' => 'Sua conta já foi confirmada ou tente enviar novamente novo de e-mail de confirmação',
@@ -135,7 +136,7 @@ return [
             'forgot_pass' => 'Esqueceu sua Senha?',
             'button_title' => 'Entrar',
             'remember' => 'Lembrar de mim',
-            'footer' => '© Copyright :year Serra Development, Todos os direitos reservados',
+            'footer' => '© Copyright :year Webkul Software, Todos os direitos reservados',
             'invalid-creds' => 'Por favor, verifique suas credenciais e tente novamente',
             'verify-first' => 'Verifique seu e-mail primeiro',
             'resend-verification' => 'Reenviar email de verificação novamente'
@@ -177,7 +178,7 @@ return [
                 'gender' => 'Gênero',
                 'other' => 'De outros',
                 'male' => 'Masculino',
-                'female' => 'Feminino',
+                'female' => 'Fêmeo',
                 'dob' => 'Data de Nascimento',
                 'phone' => 'Telefone',
                 'email' => 'Email',
@@ -206,7 +207,7 @@ return [
                     'contact' => 'Contato',
                     'confirm-delete' =>  'Você realmente deseja excluir este endereço?',
                     'default-delete' => 'O endereço padrão não pode ser alterado',
-                    'enter-password' => 'Digite sua senha.',
+                    'enter-password' => 'Enter Your Password.',
                 ],
 
                 'create' => [
@@ -220,7 +221,7 @@ return [
                     'street-address' => 'Endereço',
                     'country' => 'País',
                     'state' => 'Estado',
-                    'select-state' => 'Selecione um estado',
+                    'select-state' => 'Select a region, state or province',
                     'city' => 'Cidade',
                     'postcode' => 'CEP',
                     'phone' => 'Telefone',
@@ -238,7 +239,7 @@ return [
                 'delete' => [
                     'success' => 'Endereço Excluído com sucesso',
                     'failure' => 'Endereço não pode ser adicionado',
-                    'wrong-password' => 'Senha incorreta !'
+                    'wrong-password' => 'Wrong Password !'
                 ]
             ],
 
@@ -275,13 +276,13 @@ return [
                     'item-invoice' => 'Faturados (:qty_invoiced)',
                     'item-shipped' => 'enviados (:qty_shipped)',
                     'item-canceled' => 'Cancelados (:qty_canceled)',
-                    'item-refunded' => 'Devolvidos (:qty_refunded)',
+                    'item-refunded' => 'Refunded (:qty_refunded)',
                     'price' => 'Preço',
                     'total' => 'Total',
                     'subtotal' => 'Subtotal',
                     'shipping-handling' => 'Entrega & Manuseio',
                     'tax' => 'Imposto',
-                    'discount' => 'Desconto',
+                    'discount' => 'Discount',
                     'tax-percent' => 'Percentagem de imposto',
                     'tax-amount' => 'Valor de Imposto',
                     'discount-amount' => 'Valor de Desconto',
@@ -302,10 +303,12 @@ return [
                     'bill-to' => 'Cobrança de',
                     'ship-to' => 'Enviar para',
                     'contact' => 'Contato',
-                    'refunds' => 'Reembolso',
-                    'individual-refund' => 'Reembolso #:refund_id',
-                    'adjustment-refund' => 'Ajusto de Reembolso',
-                    'adjustment-fee' => 'Taxa de ajuste',
+                    'refunds' => 'Refunds',
+                    'individual-refund' => 'Refund #:refund_id',
+                    'adjustment-refund' => 'Adjustment Refund',
+                    'adjustment-fee' => 'Adjustment Fee',
+                    'tracking-number' => 'Numero de rastreio',
+                    'cancel-confirm-msg'  => 'Tem certeza de que deseja cancelar este pedido ?'
                 ]
             ],
 
@@ -337,7 +340,7 @@ return [
                 'name' => 'Título',
                 'status' => 'Status',
                 'pending' => 'Pendente',
-                'available' => 'Disponível',
+                'available' => 'acessível',
                 'expired' => 'Expirado',
                 'remaining-downloads' => 'Downloads restantes',
                 'unlimited' => 'Ilimitado',
@@ -359,8 +362,9 @@ return [
 
     'products' => [
         'layered-nav-title' => 'Compre por',
-        'price-label' => 'Tão baixo quanto',
+        'price-label' => 'em até 12x',
         'remove-filter-link-title' => 'Limpar Todos',
+        'filter-to' => 'a',
         'sort-by' => 'Ordernar por',
         'from-a-z' => 'De A-Z',
         'from-z-a' => 'De Z-A',
@@ -372,20 +376,21 @@ return [
         'pager-info' => 'Mostrando :showing de um :total de Itens',
         'description' => 'Descrição',
         'specification' => 'Especificação',
-        'total-reviews' => ':total Avaliação',
+        'total-reviews' => ':total Avaliações',
         'total-rating' => ':total_rating Notas & :total_reviews Avaliações',
         'by' => 'Por :name',
         'up-sell-title' => 'Encontramos outros produtos que você pode gostar!',
         'related-product-title' => 'Produtos Relacionados',
         'cross-sell-title' => 'Mais escolhas',
-        'reviews-title' => 'Classificações & Avaliação',
+        'reviews-title' => 'Avaliações de nossos clientes',
         'write-review-btn' => 'Escreva uma Avaliação',
         'choose-option' => 'Escolha uma opção',
         'sale' => 'Promoção',
         'new' => 'Novo',
         'empty' => 'Nenhum produto disponível nesta categoria',
-        'add-to-cart' => 'Adicionar ao Carrinho',
-        'buy-now' => 'Comprar Agora',
+        'add-to-cart' => 'Carrinho',
+        'book-now' => 'Agende agora',
+        'buy-now' => 'Comprar',
         'whoops' => 'Oppss!',
         'quantity' => 'Quantidade',
         'in-stock' => 'Em Estoque',
@@ -399,7 +404,9 @@ return [
         'your-customization' => 'Sua personalização',
         'total-amount' => 'Valor total',
         'none' => 'Nenhum',
-        'available' => 'Disponível'
+        'available-for-order' => 'Disponível para encomenda',
+        'settings' => 'Settings',
+        'compare_options' => 'Compare Options',
     ],
 
     // 'reviews' => [
@@ -450,10 +457,10 @@ return [
             'quantity-error' => 'Quantidade solicitada não está disponível',
             'cart-subtotal' => 'Subtotal do carrinho',
             'cart-remove-action' => 'Você realmente quer fazer isso ?',
-            'partial-cart-update' => 'Apenas alguns produtos foram atualizados',
+            'partial-cart-update' => 'Only some of the product(s) were updated',
             'link-missing' => '',
             'event' => [
-                'expired' => 'Este evento expirou.'
+                'expired' => 'This event has been expired.'
             ]
         ],
 
@@ -463,6 +470,7 @@ return [
             'shipping' => 'Entrega',
             'payment' => 'Pagamento',
             'complete' => 'Completo',
+            'review' => 'Reveja',
             'billing-address' => 'Endereço de Cobrança',
             'sign-in' => 'Entrar',
             'first-name' => 'Nome',
@@ -485,11 +493,11 @@ return [
             'payment-method' => 'Método de Pagamento',
             'summary' => 'Resumo do Pedido',
             'price' => 'Preço',
-            'quantity' => 'Quantidade',
+            'quantity' => 'unidades',
             'billing-address' => 'Endereço de Cobrança',
             'shipping-address' => 'Endereço de Entrega',
             'contact' => 'Contato',
-            'place-order' => 'Enviar Pedido',
+            'place-order' => 'Finalizar Compra',
             'new-address' => 'Add Novo Endereço',
             'save_as_address' => 'Salvar Endereço',
             'apply-coupon' => 'Aplicar Cupom',
@@ -500,7 +508,7 @@ return [
             'order-summary' => 'Resumo do Pedido',
             'sub-total' => 'Itens',
             'grand-total' => 'Total',
-            'delivery-charges' => 'Taxa de Entrega',
+            'delivery-charges' => 'Taxas de Entrega',
             'tax' => 'Imposto',
             'discount' => 'Desconto',
             'price' => 'preço',
@@ -546,6 +554,15 @@ return [
             'final-summary' => 'Obrigado por mostrar o seu interesse em nossa loja nós lhe enviaremos o número de rastreamento assim que for despachado',
             'help' => 'Se você precisar de algum tipo de ajuda, por favor entre em contato conosco :support_email',
             'thanks' => 'Muito Obrigado!',
+
+            'comment' => [
+                'subject' => 'Novo comentário adicionado ao seu pedido #: order_id',
+                'dear' => 'Prezado :customer_name',
+                'final-summary' => 'Obrigado por mostrar seu interesse em nossa loja',
+                'help' => 'Se você precisar de algum tipo de ajuda, entre em contato conosco :support_email',
+                'thanks' => 'Obrigada!',
+            ],
+
             'cancel' => [
                 'subject' => 'Confirmação de Cancelamento de Pedido',
                 'heading' => 'Pedido Cancelado',
@@ -575,8 +592,8 @@ return [
         ],
 
         'refund' => [
-            'heading' => 'Seu reembolso #:refund_id do pedido #:order_id',
-            'subject' => 'Reembolso de seu pedido #:order_id',
+            'heading' => 'Your Refund #:refund_id for Order #:order_id',
+            'subject' => 'Refund for your order #:order_id',
             'summary' => 'Resumo do reembolso',
             'adjustment-refund' => 'Reembolso de ajuste',
             'adjustment-fee' => 'Taxa de ajuste'
@@ -606,7 +623,7 @@ return [
                 'subject' => 'Nova Conta',
                 'password' => 'Senha',
                 'summary' => 'Sua conta foi criada.
-                Abaixo está suas informaçoes: ',
+                Abaixo está suas informaços: ',
                 'thanks' => 'Obrigado!',
             ],
 
@@ -630,7 +647,7 @@ return [
             'subscription' => [
                 'subject' => 'Email de Inscrição',
                 'greeting' => ' Bem vindo a ' . config('app.name') . ' - Incrição de Email',
-                'unsubscribe' => 'Cancelar inscrição',
+                'unsubscribe' => 'Unsubscribe',
                 'summary' => 'Obrigado por me colocar na sua caixa de entrada. Já faz um tempo desde que você leu ' . config('app.name') . ' e-mail e não queremos sobrecarregar sua caixa de entrada. Se você ainda não deseja receber
                 as últimas notícias de email marketing e, com certeza, clique no botão abaixo.'
             ]
@@ -638,7 +655,7 @@ return [
     ],
 
     'webkul' => [
-        'copy-right' => '© Copyright :year Serra Development, Todos os Direitos Reservados',
+        'copy-right' => '© Copyright :year Webkul Software, Todos os Direitos Reservados',
     ],
 
     'response' => [
