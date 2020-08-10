@@ -1,49 +1,49 @@
-name: CI-CD
-on:
-  push:
-    branches: [master]
-
-jobs:
-  build-js-css:
-    name: Build JS CSS
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PUSH_TOKEN }}
-
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-
-      - name: Install dependencies root
-        run: |
-          npm install
-          npm run production
-
-      - name: Install dependencies Velocity
-        working-directory: packages/Webkul/Velocity
-        run: |
-          npm install
-          npm run production
-
-      - name: Commit assets
-        run:  |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git checkout -B deploy
-          git add -f public/
-          git add -f resources/themes/velocity/
-          git add .
-          git commit -m "Build Front-End"
-          git push -f origin deploy
-
-      - name: Deploy to production server
-        uses: appleboy/ssh-action@master
-        with:
-          username: u580802404
-          host: 92.249.44.1
-          port: 65002
-          password: ${{ secrets.SSH_PASSPHRASE }}
-          script: cd domains/dipalha.com/laravel && sh server_deploy.sh
+#name: CI-CD
+#on:
+#  push:
+#    branches: [master]
+#
+#jobs:
+#  build-js-css:
+#    name: Build JS CSS
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#        with:
+#          token: ${{ secrets.PUSH_TOKEN }}
+#
+#      - name: Set up Node
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: "12.x"
+#
+#      - name: Install dependencies root
+#        run: |
+#          npm install
+#          npm run production
+#
+#      - name: Install dependencies Velocity
+#        working-directory: packages/Webkul/Velocity
+#        run: |
+#          npm install
+#          npm run production
+#
+#      - name: Commit assets
+#        run:  |
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "GitHub Action"
+#          git checkout -B deploy
+#          git add -f public/
+#          git add -f resources/themes/velocity/
+#          git add .
+#          git commit -m "Build Front-End"
+#          git push -f origin deploy
+#
+#      - name: Deploy to production server
+#        uses: appleboy/ssh-action@master
+#        with:
+#          username: u580802404
+#          host: 92.249.44.1
+#          port: 65002
+#          password: ${{ secrets.SSH_PASSPHRASE }}
+#          script: cd domains/dipalha.com/laravel && sh server_deploy.sh
