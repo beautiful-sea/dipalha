@@ -287,7 +287,7 @@ return [
 
     'responsive' => [
         'header' => [
-            'greeting' => 'Bem-vinda, :customer !',
+            'greeting' => 'Bem-vindo (a), :customer !',
         ]
     ],
 ]
