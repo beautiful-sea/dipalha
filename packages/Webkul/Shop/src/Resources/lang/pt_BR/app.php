@@ -372,7 +372,7 @@ return [
         'oldest-first' => 'Antigos Primeiros',
         'cheapest-first' => 'Mais baratos primeiros',
         'expensive-first' => 'Mas caros primeiros',
-        'show' => 'Visualiar',
+        'show' => 'Visualizar',
         'pager-info' => 'Mostrando :showing de um :total de Itens',
         'description' => 'Descrição',
         'specification' => 'Especificação',

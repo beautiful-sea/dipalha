@@ -161,7 +161,7 @@ return [
         'wishlist' => 'Lista de desejo',
         'all-categories' => 'Toda loja',
         'search-text' => 'Pesquise produtos aqui',
-        'welcome-message' => 'Bem-vinda, :customer_name',
+        'welcome-message' => 'Bem-vindo (a), :customer_name',
         'dropdown-text' => 'Configurar carrinho, pedidos & listas de desejo',
         'sign-in' => 'Entrar',
         'sign-up' => 'Criar conta'
