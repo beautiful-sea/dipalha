@@ -6,7 +6,7 @@
 @if ($velocityMetaData && $velocityMetaData->advertisement)
     @php
         $advertisement = json_decode($velocityMetaData->advertisement, true);
-        
+
         if (isset($advertisement[3]) && is_array($advertisement[3])) {
             $advertisementThree = array_values(array_filter($advertisement[3]));
         }
@@ -17,7 +17,7 @@
             $isRendered = true;
         @endphp
 
-        <div class="container-fluid advertisement-three-container">
+        <div class="container-fluid advertisement-three-container" v-if="isMobile()">
             <div class="row">
                 @if ( isset($advertisementThree[0]))
                     <a @if (isset($one)) href="{{ $one }}" @endif class="col-lg-6 col-md-12 no-padding">
@@ -43,7 +43,7 @@
 @endif
 
 @if (! $isRendered)
-    <div class="container-fluid advertisement-three-container">
+    <div class="container-fluid advertisement-three-container" v-if="isMobile()">
         <div class="row">
             <a @if (isset($one)) href="{{ $one }}" @endif class="col-lg-6 col-md-12 no-padding">
                 <img src="{{ asset('/themes/velocity/assets/images/headphones.png') }}" class="full-width" />

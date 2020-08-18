@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VeeValidate from 'vee-validate';
+import pt_BR from 'vee-validate/dist/locale/pt_BR';
 
 import './bootstrap';
 
@@ -8,6 +9,9 @@ window.VeeValidate = VeeValidate;
 
 Vue.use(VeeValidate, {
     events: 'input|change|blur',
+    dictionary: {
+        pt_BR:pt_BR
+    }
 });
 Vue.prototype.$http = axios
 
@@ -90,7 +94,7 @@ $(document).ready(function () {
                 if (typeof flashMessages == 'undefined') {
                     return;
                 };
-                
+
                 const flashes = this.$refs.flashes;
 
                 flashMessages.forEach(function(flash) {

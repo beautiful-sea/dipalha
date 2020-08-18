@@ -4,6 +4,7 @@ import VeeValidate from 'vee-validate';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
 import ja from 'vee-validate/dist/locale/ja';
+import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import axios from 'axios';
 import VueSlider from 'vue-slider-component';
 import accounting from 'accounting';
@@ -21,7 +22,7 @@ Vue.use(VeeValidate, {
         ar: ar,
         de: de,
         ja: ja,
-        js:js
+        pt_BR:pt_BR
     },
     events: 'input|change|blur',
 });

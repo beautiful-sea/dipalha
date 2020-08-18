@@ -5,6 +5,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/index.css';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
+import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import VeeValidate, { Validator } from 'vee-validate';
 import axios from 'axios';
 
@@ -22,6 +23,7 @@ Vue.use(VeeValidate, {
     dictionary: {
         ar: ar,
         de: de,
+        pt_BR:pt_BR
     }
 });
 
@@ -339,7 +341,7 @@ $(document).ready(function () {
             showLoader: function () {
                 $('#loader').show();
                 $('.overlay-loader').show();
-                
+
                 document.body.classList.add("modal-open");
             },
 

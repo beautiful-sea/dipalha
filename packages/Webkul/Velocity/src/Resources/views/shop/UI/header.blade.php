@@ -10,7 +10,7 @@
                                 <span>
                                     @guest('customer')
                                         <a class="unset" href="{{ route('customer.session.index') }}">
-                                        {{ __('velocity::app.responsive.header.greeting', ['customer' => 'Guest']) }}
+                                        {{ __('velocity::app.responsive.header.greeting', ['customer' => 'Visitante']) }}
                                         </a>
                                     @endguest
 
