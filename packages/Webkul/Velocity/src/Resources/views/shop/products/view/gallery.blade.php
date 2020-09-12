@@ -9,13 +9,13 @@
 
     <div class="product-image-group">
         <div class="row col-12">
-            <magnify-image src="{{ $images[0]['large_image_url'] }}" v-if="!isMobile()">
+            <magnify-image src="{{ $images[0]['large_image_url'] }}?wd={{random_int(0,100)}}" v-if="!isMobile()">
             </magnify-image>
 
             <img
                 v-else
                 class="vc-small-product-image"
-                src="{{ $images[0]['large_image_url'] }}" />
+                src="{{ $images[0]['large_image_url'] }}?wd={{random_int(0,100)}}"  style="height:100%;object-fit: cover;"/>
         </div>
 
         <div class="row col-12">

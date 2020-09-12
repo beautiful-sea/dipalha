@@ -193,7 +193,7 @@
                 )
                     @foreach (json_decode($velocityMetaData['product_view_images'], true) as $image)
                         @if ($image && $image !== '')
-                            <img src="{{ url()->to('/') }}/storage/{{ $image }}" />
+                            <img src="{{ url()->to('/') }}/storage/{{ $image }}?wd={{random_int(0,100)}}"  style="height:100%;object-fit: cover;"/>
                         @endif
                     @endforeach
                 @endif

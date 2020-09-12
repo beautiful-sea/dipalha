@@ -21,19 +21,42 @@
             <div class="row">
                 @if ( isset($advertisementThree[0]))
                     <a @if (isset($one)) href="{{ $one }}" @endif class="col-lg-6 col-md-12 no-padding">
-                        <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
+                        <img src="{{ asset('/storage/' . $advertisementThree[0]) }}?wd={{random_int(0,100)}}" class="full-width" />
                     </a>
                 @endif
 
                 <div class="col-lg-6 col-md-12 second-panel">
                     @if ( isset($advertisementThree[1]))
                         <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
-                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="col-12 pr0" />
+                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}?wd={{random_int(0,100)}}" class="col-12 pr0" />
                         </a>
                     @endif
                     @if ( isset($advertisementThree[2]))
                         <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
-                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="col-12 pr0" />
+                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}?wd={{random_int(0,100)}}" class="col-12 pr0" />
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid advertisement-three-container" v-if="!isMobile()">
+            <div class="row" >
+                @if ( isset($advertisementThree[0]))
+                    <a @if (isset($one)) href="{{ $one }}" @endif class="col-lg-6 col-md-12 no-padding">
+                        <img src="{{ asset('/storage/' . $advertisementThree[0]) }}?wd={{random_int(0,100)}}" style="object-fit: cover;" class="full-width" />
+                    </a>
+                @endif
+
+                <div class="col-lg-6 col-md-12 second-panel">
+                    @if ( isset($advertisementThree[1]))
+                        <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
+                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}?wd={{random_int(0,100)}}"  style="height:100%;object-fit: cover;"  class="col-12 pr0" />
+                        </a>
+                    @endif
+                    @if ( isset($advertisementThree[2]))
+                        <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
+                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}?wd={{random_int(0,100)}}" style="height:100%;object-fit: cover;"  class="col-12 pr0" />
                         </a>
                     @endif
                 </div>
