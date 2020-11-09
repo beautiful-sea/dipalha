@@ -11,7 +11,7 @@
             <div class="page-header">
                 <div class="page-title">
                     <h1>
-                        <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
+                        <i class="icon angle-left-icon back-link" onclick="window.location = history.length > 1 ? document.referrer : '{{ route('admin.dashboard.index') }}'"></i>
 
                         {{ __('admin::app.catalog.attributes.add-title') }}
                     </h1>
@@ -296,7 +296,10 @@
                             </td>
 
                             <td v-if="show_swatch && swatch_type == 'image'">
-                                <input type="file" accept="image/*" :name="'options[' + row.id + '][swatch_value]'"/>
+                                <div class="control-group" :class="[errors.has('options[' + row.id + '][swatch_value]') ? 'has-error' : '']">
+                                    <input type="file" v-validate="'size:600'" accept="image/*" :name="'options[' + row.id + '][swatch_value]'"/>
+                                    <span class="control-error" v-if="errors.has('options[' + row.id + '][swatch_value]')">The image size must be less than 600 KB</span>
+                                </div>
                             </td>
 
                             <td>
@@ -309,7 +312,7 @@
                             @foreach (app('Webkul\Core\Repositories\LocaleRepository')->all() as $locale)
                                 <td>
                                     <div class="control-group" :class="[errors.has(localeInputName(row, '{{ $locale->code }}')) ? 'has-error' : '']">
-                                        <input type="text" v-validate="getOptionValidation(row, '{{ $locale->code }}')"  v-model="row['{{ $locale->code }}']" :name="localeInputName(row, '{{ $locale->code }}')" class="control" data-vv-as="&quot;{{ $locale->name . ' (' . $locale->code . ')' }}&quot;"/>
+                                        <input type="text" v-validate="getOptionValidation(row, '{{ $locale->code }}')"  v-model="row['locales']['{{ $locale->code }}']" :name="localeInputName(row, '{{ $locale->code }}')" class="control" data-vv-as="&quot;{{ $locale->name . ' (' . $locale->code . ')' }}&quot;"/>
                                         <span class="control-error" v-if="errors.has(localeInputName(row, '{{ $locale->code }}'))">@{{ errors.first(localeInputName(row, '{!! $locale->code !!}')) }}</span>
                                     </div>
                                 </td>
@@ -383,10 +386,10 @@
                 addOptionRow: function (isNullOptionRow) {
                     const rowCount = this.optionRowCount++;
                     const id = 'option_' + rowCount;
-                    let row = {'id': id};
+                    let row = {'id': id, 'locales': {}};
 
                     @foreach (app('Webkul\Core\Repositories\LocaleRepository')->all() as $locale)
-                        row['{{ $locale->code }}'] = '';
+                        row['locales']['{{ $locale->code }}'] = '';
                     @endforeach
 
                     row['notRequired'] = '';

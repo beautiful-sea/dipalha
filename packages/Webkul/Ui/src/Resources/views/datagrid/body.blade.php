@@ -1,5 +1,5 @@
 <tbody>
-    @if (count($records))
+    @if ($records instanceof \Illuminate\Pagination\LengthAwarePaginator && count($records))
         @foreach ($records as $key => $record)
             <tr>
                 @if ($enableMassActions)
@@ -13,13 +13,11 @@
                 @endif
 
                 @foreach ($columns as $column)
-
                     @php
                         $columnIndex = explode('.', $column['index']);
 
                         $columnIndex = end($columnIndex);
                     @endphp
-{{--                        {{json_encode($record)}}--}}
 
                     @if (isset($column['wrapper']))
                         @if (isset($column['closure']) && $column['closure'] == true)
@@ -30,7 +28,7 @@
                     @else
                         @if ($column['type'] == 'price')
                             @if (isset($column['currencyCode']))
-                                    <td data-value="{{ $column['label'] }}">{{ core()->formatPrice($record->{$columnIndex}, $column['currencyCode']) }}</td>
+                                <td data-value="{{ $column['label'] }}">{{ core()->formatPrice($record->{$columnIndex}, $column['currencyCode']) }}</td>
                             @else
                                 <td data-value="{{ $column['label'] }}">{{ core()->formatBasePrice($record->{$columnIndex}) }}</td>
                             @endif
@@ -50,25 +48,32 @@
 
                                 @if ($toDisplay)
                                     <a
-                                    @if ($action['method'] == 'GET')
-                                        href="{{ route($action['route'], $record->{$action['index'] ?? $index}) }}"
-                                    @endif
+                                        id="{{ $record->{$action['index'] ?? $index} }}"
 
-                                    @if ($action['method'] != 'GET')
-                                        v-on:click="doAction($event)"
-                                    @endif
+                                        @if ($action['method'] == 'GET')
+                                            href="{{ route($action['route'], $record->{$action['index'] ?? $index}) }}"
+                                        @endif
 
-                                    data-method="{{ $action['method'] }}"
-                                    data-action="{{ route($action['route'], $record->{$index}) }}"
-                                    data-token="{{ csrf_token() }}"
+                                        @if ($action['method'] != 'GET')
+                                            @if (isset($action['function']))
+                                                v-on:click="{{$action['function']}}"
+                                            @else
+                                                v-on:click="doAction($event)"
+                                            @endif
+                                        @endif
 
-                                    @if (isset($action['target']))
-                                        target="{{ $action['target'] }}"
-                                    @endif
+                                        data-method="{{ $action['method'] }}"
+                                        data-action="{{ route($action['route'], $record->{$index}) }}"
+                                        data-token="{{ csrf_token() }}"
 
-                                    @if (isset($action['title']))
-                                        title="{{ $action['title'] }}"
-                                    @endif>
+                                        @if (isset($action['target']))
+                                            target="{{ $action['target'] }}"
+                                        @endif
+
+                                        @if (isset($action['title']))
+                                            title="{{ $action['title'] }}"
+                                        @endif
+                                    >
                                         <span class="{{ $action['icon'] }}"></span>
                                     </a>
                                 @endif
@@ -80,7 +85,9 @@
         @endforeach
     @else
         <tr>
-            <td colspan="10" style="text-align: center;">{{ $norecords }}</td>
+            <td colspan="10">
+                <p style="text-align: center;">{{ $norecords }}</p>
+            </td>
         </tr>
     @endif
 </tbody>

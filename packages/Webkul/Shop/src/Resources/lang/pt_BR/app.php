@@ -72,7 +72,8 @@ return [
         'page-title' => 'Buscar',
         'found-results' => 'Resultados da pesquisa encontrados',
         'found-result' => 'Resultado da pesquisa encontrado',
-        'analysed-keywords' => 'Analysed Keywords'
+        'analysed-keywords' => 'Analysed Keywords',
+        'image-search-option' => 'Opção de busca de imagem'
     ],
 
     'reviews' => [
@@ -92,6 +93,19 @@ return [
     ],
 
     'customer' => [
+        'compare' => [
+            'text' => 'Comparar',
+            'compare_similar_items' => 'Comparar itens semelhantes',
+            'add-tooltip' => 'Adicionar produto à lista de comparação',
+            'already_added' => 'Item já adicionado à lista de comparação',
+            'added' => 'Item adicionado com sucesso à lista de comparação',
+            'removed' => 'Item removido com sucesso da lista de comparação',
+            'removed-all' => 'Todos os itens removidos com sucesso da lista de comparação',
+            'empty-text' => "Você não possui nenhum item na sua lista de comparação",
+            'product_image' => 'Imagem do Produto',
+            'actions' => 'Ações',
+        ],
+
         'signup-text' => [
             'account_exists' => 'Já tem uma conta',
             'title' => 'Entrar'
@@ -162,6 +176,11 @@ return [
             'dashboard' => 'Cliente - Perfil',
             'menu' => 'Menu',
 
+            'general' => [
+                'no' => 'Não',
+                'yes' => 'sim',
+            ],
+
             'profile' => [
                 'index' => [
                     'page-title' => 'Cliente - Perfil',
@@ -207,7 +226,7 @@ return [
                     'contact' => 'Contato',
                     'confirm-delete' =>  'Você realmente deseja excluir este endereço?',
                     'default-delete' => 'O endereço padrão não pode ser alterado',
-                    'enter-password' => 'Enter Your Password.',
+                    'enter-password' => 'Digite sua senha.',
                 ],
 
                 'create' => [
@@ -321,6 +340,8 @@ return [
                 'error' => 'Não é possível adicionar o produto a lista de Desejos devido a problemas desconhecidos, por favor tente mais tarde',
                 'add' => 'Item adicionado com sucesso a Lista de Desejos',
                 'remove' => 'Item removido com sucesso da Lista de Desejos',
+                'add-wishlist-text' => 'Adicionar produto à lista de desejos',
+                'remove-wishlist-text' => 'Remover produto da lista de desejos',
                 'moved' => 'Item movido com sucesso para Lista de Desejos',
                 'option-missing' => 'As opções do produto estão ausentes, portanto, o item não pode ser movido para a lista de desejos.',
                 'move-error' => 'Item não pode ser movido para Lista de Desejos, por favor, tente novamente mais tarde',
@@ -407,6 +428,7 @@ return [
         'available-for-order' => 'Disponível para encomenda',
         'settings' => 'Settings',
         'compare_options' => 'Compare Options',
+        'wishlist-options' => 'Wishlist Options'
     ],
 
     // 'reviews' => [
@@ -453,6 +475,8 @@ return [
                 'success' => 'Item foi adicionado com sucesso ao carrinho',
                 'success-remove' => 'Item foi removido com sucesso do carrinho',
                 'error-add' => 'Item não pode ser adicionado ao carrinho, por favor, tente novamente mais tarde',
+                'inactive' => 'Um item estava inativo e foi removido do carrinho',
+                'inactive-add' => 'Item inativo não pode ser adicionado ao carrinho',
             ],
             'quantity-error' => 'Quantidade solicitada não está disponível',
             'cart-subtotal' => 'Subtotal do carrinho',
@@ -613,6 +637,13 @@ return [
             'info' => 'Você está recebendo este e-mail porque recebemos uma solicitação de redefinição de senha para sua conta',
             'reset-password' => 'Redefinir Senha',
             'final-summary' => 'Se você não solicitou uma redefinição de senha, nenhuma ação adicional é necessária',
+            'thanks' => 'Obrigado!'
+        ],
+
+        'update-password' => [
+            'subject' => 'Senha atualizada',
+            'dear' => 'Caro :name',
+            'info' => 'Você está recebendo este e-mail porque atualizou sua senha.',
             'thanks' => 'Obrigado!'
         ],
 

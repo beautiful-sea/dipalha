@@ -2,11 +2,15 @@
 
 namespace Webkul\Product\Models;
 
+use Exception;
+use Webkul\Product\Type\AbstractType;
 use Illuminate\Database\Eloquent\Model;
-use Webkul\Attribute\Models\AttributeFamilyProxy;
 use Webkul\Category\Models\CategoryProxy;
 use Webkul\Attribute\Models\AttributeProxy;
+use Webkul\Product\Database\Eloquent\Builder;
+use Webkul\Attribute\Models\AttributeFamilyProxy;
 use Webkul\Inventory\Models\InventorySourceProxy;
+use Webkul\Attribute\Repositories\AttributeRepository;
 use Webkul\Product\Contracts\Product as ProductContract;
 
 class Product extends Model implements ProductContract
@@ -20,9 +24,27 @@ class Product extends Model implements ProductContract
 
     protected $typeInstance;
 
-    // protected $with = ['attribute_family', 'inventories'];
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        parent::boot();
 
-    // protected $table = 'products';
+        static::deleting(function ($product) {
+            foreach ($product->product_flats as $productFlat) {
+                $productFlat->unsearchable();
+            }
+
+            foreach ($product->variants as $variant) {
+                foreach ($variant->product_flats as $productFlat) {
+                    $productFlat->unsearchable();
+                }
+            }
+        });
+    }
 
     /**
      * Get the product attribute family that owns the product.
@@ -38,6 +60,15 @@ class Product extends Model implements ProductContract
     public function attribute_values()
     {
         return $this->hasMany(ProductAttributeValueProxy::modelClass());
+    }
+
+    /**
+     * Get the product flat entries that are associated with product.
+     * May be one for each locale and each channel.
+     */
+    public function product_flats()
+    {
+        return $this->hasMany(ProductFlatProxy::modelClass(), 'product_id');
     }
 
     /**
@@ -179,6 +210,14 @@ class Product extends Model implements ProductContract
     }
 
     /**
+     * Get the product customer group prices that owns the product.
+     */
+    public function customer_group_prices()
+    {
+        return $this->hasMany(ProductCustomerGroupPriceProxy::modelClass());
+    }
+
+    /**
      * @param integer $qty
      *
      * @return bool
@@ -186,8 +225,8 @@ class Product extends Model implements ProductContract
     public function inventory_source_qty($inventorySourceId)
     {
         return $this->inventories()
-                    ->where('inventory_source_id', $inventorySourceId)
-                    ->sum('qty');
+            ->where('inventory_source_id', $inventorySourceId)
+            ->sum('qty');
     }
 
     /**
@@ -202,6 +241,12 @@ class Product extends Model implements ProductContract
         }
 
         $this->typeInstance = app(config('product_types.' . $this->type . '.class'));
+
+        if (! $this->typeInstance instanceof AbstractType) {
+            throw new Exception(
+                "Please ensure the product type '{$this->type}' is configured in your application."
+            );
+        }
 
         $this->typeInstance->setProduct($this);
 
@@ -227,11 +272,11 @@ class Product extends Model implements ProductContract
     }
 
     /**
-     * @param integer $qty
+     * @param int $qty
      *
      * @return bool
      */
-    public function haveSufficientQuantity($qty)
+    public function haveSufficientQuantity(int $qty): bool
     {
         return $this->getTypeInstance()->haveSufficientQuantity($qty);
     }
@@ -249,6 +294,7 @@ class Product extends Model implements ProductContract
      *
      * @param Group $group
      * @param bool  $skipSuperAttribute
+     *
      * @return Collection
      */
     public function getEditableAttributes($group = null, $skipSuperAttribute = true)
@@ -259,7 +305,8 @@ class Product extends Model implements ProductContract
     /**
      * Get an attribute from the model.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return mixed
      */
     public function getAttribute($key)
@@ -271,8 +318,8 @@ class Product extends Model implements ProductContract
             if (isset($this->id)) {
                 $this->attributes[$key] = '';
 
-                $attribute = core()->getSingletonInstance(\Webkul\Attribute\Repositories\AttributeRepository::class)
-                                   ->getAttributeByCode($key);
+                $attribute = core()->getSingletonInstance(AttributeRepository::class)
+                    ->getAttributeByCode($key);
 
                 $this->attributes[$key] = $this->getCustomAttributeValue($attribute);
 
@@ -293,8 +340,9 @@ class Product extends Model implements ProductContract
         $hiddenAttributes = $this->getHidden();
 
         if (isset($this->id)) {
-            $familyAttributes = core()->getSingletonInstance(\Webkul\Attribute\Repositories\AttributeRepository::class)
-                                      ->getFamilyAttributes($this->attribute_family);
+            $familyAttributes = core()
+                ->getSingletonInstance(AttributeRepository::class)
+                ->getFamilyAttributes($this->attribute_family);
 
             foreach ($familyAttributes as $attribute) {
                 if (in_array($attribute->code, $hiddenAttributes)) {
@@ -343,12 +391,13 @@ class Product extends Model implements ProductContract
     /**
      * Overrides the default Eloquent query builder
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function newEloquentBuilder($query)
     {
-        return new \Webkul\Product\Database\Eloquent\Builder($query);
+        return new Builder($query);
     }
 
     /**

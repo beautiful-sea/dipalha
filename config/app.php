@@ -56,6 +56,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Admin URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL suffix is used to define the admin url for example
+    | admin/ or backend/
+    |
+    */
+
+    'admin_url' => env('APP_ADMIN_URL', 'admin'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
@@ -65,7 +77,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE','America/Sao_Paulo'),
+    'timezone' => env('APP_TIMEZONE','Asia/Kolkata'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +90,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'pt_BR'),
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -234,8 +246,6 @@ return [
         //Laravel Maatwebsite
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
-        Barryvdh\Debugbar\ServiceProvider::class,
-
         //Repository
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Konekt\Concord\ConcordServiceProvider::class,
@@ -243,8 +253,6 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
-        //DIPALHA
-        Dipalha\Shop\Providers\ShopServiceProvider::class,
         //Webkul packages
         Webkul\Theme\Providers\ThemeServiceProvider::class,
         Webkul\User\Providers\UserServiceProvider::class,
@@ -253,6 +261,7 @@ return [
         Webkul\Category\Providers\CategoryServiceProvider::class,
         Webkul\Attribute\Providers\AttributeServiceProvider::class,
         Webkul\Core\Providers\CoreServiceProvider::class,
+        Webkul\Core\Providers\EnvValidatorServiceProvider::class,
         Webkul\Shop\Providers\ShopServiceProvider::class,
         Webkul\Customer\Providers\CustomerServiceProvider::class,
         Webkul\Inventory\Providers\InventoryServiceProvider::class,
@@ -270,6 +279,7 @@ return [
         Webkul\CMS\Providers\CMSServiceProvider::class,
         Webkul\Velocity\Providers\VelocityServiceProvider::class,
         Webkul\BookingProduct\Providers\BookingProductServiceProvider::class,
+        Webkul\SocialLogin\Providers\SocialLoginServiceProvider::class,
     ],
 
     /*

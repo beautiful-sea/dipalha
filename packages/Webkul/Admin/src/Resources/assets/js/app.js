@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import VeeValidate from 'vee-validate';
-import pt_BR from 'vee-validate/dist/locale/pt_BR';
+import VeeValidate, { Validator } from 'vee-validate';
+import de from 'vee-validate/dist/locale/de';
+import ar from 'vee-validate/dist/locale/ar';
 
 import './bootstrap';
 
@@ -8,12 +9,15 @@ window.Vue = Vue;
 window.VeeValidate = VeeValidate;
 
 Vue.use(VeeValidate, {
-    events: 'input|change|blur',
     dictionary: {
-        pt_BR:pt_BR
-    }
+        ar: ar,
+        de: de,
+    },
+    events: 'input|change|blur',
 });
 Vue.prototype.$http = axios
+
+Vue.component('required-if', require('./components/validators/required-if').default);
 
 window.eventBus = new Vue();
 
@@ -34,6 +38,8 @@ $(document).ready(function () {
         mounted() {
             this.addServerErrors();
             this.addFlashMessages();
+
+            this.$validator.localize(document.documentElement.lang);
         },
 
         methods: {

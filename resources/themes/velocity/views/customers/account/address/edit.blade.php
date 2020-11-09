@@ -23,13 +23,6 @@
 
             <?php $addresses = explode(PHP_EOL, (old('address1') ?? $address->address1)); ?>
 
-            <div class="control-group" :class="[errors.has('company_name') ? 'has-error' : '']">
-                <label for="company_name">{{ __('shop::app.customer.account.address.edit.company_name') }}</label>
-                <input type="text"  class="control" name="company_name" value="{{ old('company_name') ?? $address->company_name }}" data-vv-as="&quot;{{ __('shop::app.customer.account.address.edit.company_name') }}&quot;">
-                <span class="control-error" v-if="errors.has('company_name')">@{{ errors.first('company_name') }}</span>
-            </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.company_name.after') !!}
 
             <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
                 <label for="first_name" class="mandatory">{{ __('shop::app.customer.account.address.create.first_name') }}</label>
@@ -47,15 +40,7 @@
 
             {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.last_name.after') !!}
 
-            <div class="control-group" :class="[errors.has('vat_id') ? 'has-error' : '']">
-                <label for="vat_id">{{ __('shop::app.customer.account.address.create.vat_id') }}
-                    <span class="help-note">{{ __('shop::app.customer.account.address.create.vat_help_note') }}</span>
-                </label>
-                <input type="text" class="control" name="vat_id" value="{{ old('vat_id') ?? $address->vat_id }}" v-validate="" data-vv-as="&quot;{{ __('shop::app.customer.account.address.create.vat_id') }}&quot;">
-                <span class="control-error" v-if="errors.has('vat_id')">@{{ errors.first('vat_id') }}</span>
-            </div>
 
-            {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.vat_id.after') !!}
 
             <div class="control-group" :class="[errors.has('address1[]') ? 'has-error' : '']">
                 <label for="address_0" class="mandatory">{{ __('shop::app.customer.account.address.edit.street-address') }}</label>

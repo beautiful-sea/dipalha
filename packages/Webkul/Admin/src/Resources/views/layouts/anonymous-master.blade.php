@@ -7,7 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+        @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
+            <link rel="icon" sizes="16x16" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}" />
+        @else
+            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+        @endif
 
         <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
@@ -67,7 +71,7 @@
 
         {!! view_render_event('bagisto.admin.layout.head') !!}
     </head>
-    <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+    <body @if (core()->getCurrentLocale() && core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
         <div id="app" class="container">
 
             <flash-wrapper ref='flashes'></flash-wrapper>
@@ -77,8 +81,8 @@
                 <div class="adjacent-center">
 
                     <div class="brand-logo">
-                        @if (core()->getConfigData('general.design.admin_logo.logo_image'))
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}" alt="{{ config('app.name') }}" style="height: 150px; "/>
+                        @if (core()->getConfigData('general.design.admin_logo.logo_image', core()->getCurrentChannelCode()))
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image', core()->getCurrentChannelCode())) }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
                         @else
                             <img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="{{ config('app.name') }}"/>
                         @endif

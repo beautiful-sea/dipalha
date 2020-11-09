@@ -2,13 +2,15 @@
 
 namespace Webkul\Velocity\Repositories;
 
-use Illuminate\Container\Container as App;
 use Webkul\Core\Eloquent\Repository;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Container\Container as App;
 use Webkul\Product\Repositories\ProductRepository;
+use Prettus\Repository\Traits\CacheableRepository;
 
 class ContentRepository extends Repository
 {
+    use CacheableRepository;
+
    /**
     * Product Repository object
     *
@@ -130,7 +132,7 @@ class ContentRepository extends Repository
         $query = $this->model::orderBy('position', 'ASC');
 
         $velocityMetaData = app('Webkul\Velocity\Helpers\Helper')->getVelocityMetaData();
-        $headerContentCount = $velocityMetaData->header_content_count;
+        $headerContentCount = $velocityMetaData->header_content_count ?? '';
 
         $headerContentCount = $headerContentCount != '' ? $headerContentCount : 5;
 
@@ -149,7 +151,7 @@ class ContentRepository extends Repository
             ->get();
 
         $formattedContent = [];
-        
+
         foreach ($contentCollection as $content) {
             array_push($formattedContent, [
                 'title'        => $content->title,
@@ -158,7 +160,7 @@ class ContentRepository extends Repository
                 'content_type' => $content->content_type,
             ]);
         }
-        
+
         return $formattedContent;
     }
 }

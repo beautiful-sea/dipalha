@@ -39,6 +39,10 @@
                 </div>
 
                 <div>
+                    {{ $order->shipping_address->company_name ?? '' }}
+                </div>
+
+                <div>
                     {{ $order->shipping_address->name }}
                 </div>
 
@@ -71,6 +75,10 @@
                 </div>
 
                 <div>
+                    {{ $order->billing_address->company_name ?? '' }}
+                </div>
+
+                <div>
                     {{ $order->billing_address->name }}
                 </div>
 
@@ -95,6 +103,15 @@
                 <div style="font-size: 16px; color: #242424;">
                     {{ core()->getConfigData('sales.paymentmethods.' . $order->payment->method . '.title') }}
                 </div>
+
+                @php $additionalDetails = \Webkul\Payment\Payment::getAdditionalDetails($order->payment->method); @endphp
+
+                @if (! empty($additionalDetails))
+                    <div style="font-size: 16px; color: #242424;">
+                        <div>{{ $additionalDetails['title'] }}</div>
+                        <div>{{ $additionalDetails['value'] }}</div>
+                    </div>
+                @endif
             </div>
         </div>
 

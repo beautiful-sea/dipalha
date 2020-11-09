@@ -21,11 +21,19 @@
                             @foreach ($cart->items as $key => $item)
                                 @php
                                     $productBaseImage = $item->product->getTypeInstance()->getBaseImage($item);
+
+                                    if (is_null ($item->product->url_key)) {
+                                        if (! is_null($item->product->parent)) {
+                                            $url_key = $item->product->parent->url_key;
+                                        }
+                                    } else {
+                                        $url_key = $item->product->url_key;
+                                    }
                                 @endphp
 
                                 <div class="item mt-5">
                                     <div class="item-image" style="margin-right: 15px;">
-                                        <a href="{{ route('shop.productOrCategory.index', $item->product->url_key) }}"><img src="{{ $productBaseImage['medium_image_url'] }}" /></a>
+                                        <a href="{{ route('shop.productOrCategory.index', $url_key) }}"><img src="{{ $productBaseImage['medium_image_url'] }}" alt="" /></a>
                                     </div>
 
                                     <div class="item-details">
@@ -33,7 +41,7 @@
                                         {!! view_render_event('bagisto.shop.checkout.cart.item.name.before', ['item' => $item]) !!}
 
                                         <div class="item-title">
-                                            <a href="{{ route('shop.productOrCategory.index', $item->product->url_key) }}">
+                                            <a href="{{ route('shop.productOrCategory.index', $url_key) }}">
                                                 {{ $item->product->name }}
                                             </a>
                                         </div>
@@ -79,13 +87,19 @@
                                                 <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
 
                                             @auth('customer')
-                                                <span class="towishlist">
-                                                    @if ($item->parent_id != 'null' ||$item->parent_id != null)
-                                                        <a href="{{ route('shop.movetowishlist', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
-                                                    @else
-                                                        <a href="{{ route('shop.movetowishlist', $item->child->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                    @php
+                                                        $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false;
+                                                    @endphp
+
+                                                    @if ($showWishlist)
+                                                        <span class="towishlist">
+                                                            @if ($item->parent_id != 'null' ||$item->parent_id != null)
+                                                                <a href="{{ route('shop.movetowishlist', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                            @else
+                                                                <a href="{{ route('shop.movetowishlist', $item->child->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                            @endif
+                                                        </span>
                                                     @endif
-                                                </span>
                                             @endauth
                                         </div>
 

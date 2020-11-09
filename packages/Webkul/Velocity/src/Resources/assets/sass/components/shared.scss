@@ -480,7 +480,6 @@
 
             > div {
                 display: table-cell;
-                vertical-align: middle;
             }
         }
 
@@ -510,7 +509,6 @@
 
         .add-to-cart-btn {
             float: left;
-            max-width: 150px;
             display: inline-block;
         }
     }
@@ -728,7 +726,9 @@ select:focus,
 .control-error {
     color: $color-danger;
 }
-.mandatory {
+
+.mandatory,
+.required {
     width: 100%;
 
     &::after {
@@ -774,7 +774,7 @@ a {
 }
 
 .scrollable {
-    max-height: 100vh;
+    max-height: 100%;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;

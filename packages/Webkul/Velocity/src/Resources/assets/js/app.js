@@ -5,9 +5,9 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/index.css';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
-import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import VeeValidate, { Validator } from 'vee-validate';
 import axios from 'axios';
+import 'lazysizes';
 
 window.axios = axios;
 window.VeeValidate = VeeValidate;
@@ -23,7 +23,6 @@ Vue.use(VeeValidate, {
     dictionary: {
         ar: ar,
         de: de,
-        pt_BR:pt_BR
     }
 });
 
@@ -53,6 +52,9 @@ Vue.component("shimmer-component", require("./UI/components/shimmer-component"))
 Vue.component('responsive-sidebar', require('./UI/components/responsive-sidebar'));
 Vue.component('product-quick-view', require('./UI/components/product-quick-view'));
 Vue.component('product-quick-view-btn', require('./UI/components/product-quick-view-btn'));
+Vue.component('category-products', require('./UI/components/category-products'));
+Vue.component('hot-category', require('./UI/components/hot-category'));
+Vue.component('popular-category', require('./UI/components/popular-category'));
 
 window.eventBus = new Vue();
 
@@ -69,7 +71,7 @@ $(document).ready(function () {
                 'sharedRootCategories': [],
                 'responsiveSidebarTemplate': '',
                 'responsiveSidebarKey': Math.random(),
-                'baseUrl': document.querySelector("script[src$='velocity.js']").getAttribute('baseUrl'),
+                'baseUrl': document.querySelector("script[src$='velocity.js']").getAttribute('baseUrl')
             }
         },
 
@@ -166,11 +168,18 @@ $(document).ready(function () {
             },
 
             isMobile: function () {
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                  return true
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i|/mobi/i.test(navigator.userAgent)) {
+                    if (this.isMaxWidthCrossInLandScape()) {
+                        return false;
+                    }
+                    return true
                 } else {
-                  return false
+                    return false
                 }
+            },
+
+            isMaxWidthCrossInLandScape: function() {
+                return window.innerWidth > 900;
             },
 
             getDynamicHTML: function (input) {
@@ -212,7 +221,7 @@ $(document).ready(function () {
         }
     });
 
-    new Vue({
+    const app = new Vue({
         el: "#app",
         VueToast,
 
@@ -353,6 +362,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    window.app = app;
 
     // for compilation of html coming from server
     Vue.component('vnode-injector', {

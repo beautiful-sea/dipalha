@@ -93,8 +93,8 @@ class Toolbar extends AbstractProduct
             return true;
         } elseif (! isset($params['sort'])) {
             $sortBy = core()->getConfigData('catalog.products.storefront.sort_by')
-                ? core()->getConfigData('catalog.products.storefront.sort_by')
-                : 'created_at-asc';
+                   ? core()->getConfigData('catalog.products.storefront.sort_by')
+                   : 'created_at-asc';
 
             if ($key == $sortBy) {
                 return true;
@@ -131,7 +131,13 @@ class Toolbar extends AbstractProduct
     {
         $params = request()->input();
 
-        if (isset($params['mode']) && $key == $params['mode']) {
+        $defaultMode = core()->getConfigData('catalog.products.storefront.mode')
+        ? core()->getConfigData('catalog.products.storefront.mode')
+        : 'grid';
+
+        if (request()->input() == null && $key == $defaultMode) {
+            return true;
+        } else if (isset($params['mode']) && $key == $params['mode']) {
             return true;
         }
 
@@ -152,8 +158,8 @@ class Toolbar extends AbstractProduct
         }
 
         return core()->getConfigData('catalog.products.storefront.mode')
-            ? core()->getConfigData('catalog.products.storefront.mode')
-            : 'grid';
+               ? core()->getConfigData('catalog.products.storefront.mode')
+               : 'grid';
     }
 
     /**

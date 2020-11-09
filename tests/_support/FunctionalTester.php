@@ -1,15 +1,12 @@
 <?php
 
-use Illuminate\Routing\RouteCollection;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
+use Codeception\Actor;
 use Webkul\User\Models\Admin;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Webkul\Customer\Models\Customer;
-use Webkul\Customer\Models\CustomerAddress;
-use Webkul\Checkout\Models\Cart;
-use Webkul\Checkout\Models\CartItem;
-use Webkul\Checkout\Models\CartAddress;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\RouteCollection;
 
 /**
  * Inherited Methods
@@ -26,7 +23,7 @@ use Webkul\Checkout\Models\CartAddress;
  *
  * @SuppressWarnings(PHPMD)
  */
-class FunctionalTester extends \Codeception\Actor
+class FunctionalTester extends Actor
 {
     use _generated\FunctionalTesterActions;
 
@@ -51,7 +48,7 @@ class FunctionalTester extends \Codeception\Actor
         }
 
         if (! $admin) {
-            throw new \Exception(
+            throw new Exception(
                 'Admin user not found in database. Please ensure Seeders are executed');
         }
 
@@ -89,12 +86,17 @@ class FunctionalTester extends \Codeception\Actor
 
     /**
      * @param string $name
+     * @param array  $params
+     * @param bool   $routeCheck set this to false if the action is doing a redirection
      */
-    public function amOnAdminRoute(string $name)
+    public function amOnAdminRoute(string $name, array $params = [], bool $routeCheck = true)
     {
         $I = $this;
-        $I->amOnRoute($name);
-        $I->seeCurrentRouteIs($name);
+        $I->amOnRoute($name, $params);
+
+        if ($routeCheck) {
+            $I->seeCurrentRouteIs($name);
+        }
 
         /** @var RouteCollection $routes */
         $routes = Route::getRoutes();
@@ -128,6 +130,15 @@ class FunctionalTester extends \Codeception\Actor
                     'updated_at'   => date('Y-m-d H:i:s'),
                 ]);
             }
+        }
+    }
+
+    public function useDefaultTheme(): void
+    {
+        $channel = core()->getCurrentChannel();
+
+        if ($channel->theme !== 'default') {
+            $channel->update(['theme' => 'default']);
         }
     }
 }

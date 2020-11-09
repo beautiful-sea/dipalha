@@ -15,6 +15,7 @@
         $metaKeywords = $homeSEO->meta_keywords;
     }
 @endphp
+
 @section('page_title')
     {{ isset($metaTitle) ? $metaTitle : "" }}
 @endsection

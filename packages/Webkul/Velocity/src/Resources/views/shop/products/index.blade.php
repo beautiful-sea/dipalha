@@ -83,7 +83,7 @@
                     <div class="col-12 no-padding">
                         <div class="hero-image">
                             @if (!is_null($category->image))
-                                <img class="logo" src="{{ $category->image_url }}?wd={{random_int(0,100)}}" style="height:100%;object-fit: cover;" />
+                                <img class="logo" src="{{ $category->image_url }}" alt="" width="20" height="20" />
                             @endif
                         </div>
                     </div>

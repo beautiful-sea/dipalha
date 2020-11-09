@@ -5,13 +5,13 @@
 @inject ('productRepository', 'Webkul\Product\Repositories\ProductRepository')
 
 <?php
-    $filterAttributes = [];
+    $filterAttributes = $attributes = [];
     $maxPrice = 0;
 
     if (isset($category)) {
         $products = $productRepository->getAll($category->id);
 
-        $filterAttributes = $productFlatRepository->getFilterableAttributes($category, $products);
+        $filterAttributes = $productFlatRepository->getProductsRelatedFilterableAttributes($category);
 
         $maxPrice = core()->convertPrice($productFlatRepository->getCategoryProductMaximumPrice($category));
     }

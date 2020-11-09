@@ -3,67 +3,73 @@
 
 @php
     $images = $productImageHelper->getGalleryImages($product);
+
+    if (! count($images)) {
+        $images[0] = $productImageHelper->getProductBaseImage($product);
+    }
 @endphp
 
 {!! view_render_event('bagisto.shop.products.view.gallery.before', ['product' => $product]) !!}
 
     <div class="product-image-group">
-        <div class="row col-12">
-            <magnify-image src="{{ $images[0]['large_image_url'] }}?wd={{random_int(0,100)}}" v-if="!isMobile()">
-            </magnify-image>
+        <div class="row">
+            <div class="col-12">
+                <magnify-image src="{{ $images[0]['large_image_url'] }}" v-if="!isMobile()">
+                </magnify-image>
 
-            <img
-                v-else
-                class="vc-small-product-image"
-                src="{{ $images[0]['large_image_url'] }}?wd={{random_int(0,100)}}"  style="height:100%;object-fit: cover;"/>
+                <img
+                    v-else
+                    class="vc-small-product-image"
+                    src="{{ $images[0]['large_image_url'] }}" alt="" />
+            </div>
         </div>
-
-        <div class="row col-12">
-            <product-gallery></product-gallery>
+        <div class="row">
+            <div class="col-12">
+                <product-gallery></product-gallery>
+            </div>
         </div>
-
     </div>
 
 {!! view_render_event('bagisto.shop.products.view.gallery.after', ['product' => $product]) !!}
 
-<script type="text/x-template" id="product-gallery-template">
-    <ul class="thumb-list col-12 row ltr" type="none">
-        <li class="arrow left" @click="scroll('prev')" v-if="thumbs.length > 4">
-            <i class="rango-arrow-left fs24"></i>
-        </li>
-
-        <carousel-component
-            slides-per-page="4"
-            :id="galleryCarouselId"
-            pagination-enabled="hide"
-            navigation-enabled="hide"
-            add-class="product-gallery"
-            :slides-count="thumbs.length">
-
-            <slide :slot="`slide-${index}`" v-for="(thumb, index) in thumbs">
-                <li
-                    @click="changeImage({
-                        largeImageUrl: thumb.large_image_url,
-                        originalImageUrl: thumb.original_image_url,
-                    })"
-                    :class="`thumb-frame ${index + 1 == 4 ? '' : 'mr5'} ${thumb.large_image_url == currentLargeImageUrl ? 'active' : ''}`"
-                    >
-
-                    <div
-                        class="bg-image"
-                        :style="`background-image: url(${thumb.small_image_url})`">
-                    </div>
-                </li>
-            </slide>
-        </carousel-component>
-
-        <li class="arrow right" @click="scroll('next')" v-if="thumbs.length > 4">
-            <i class="rango-arrow-right fs24"></i>
-        </li>
-    </ul>
-</script>
-
 @push('scripts')
+    <script type="text/x-template" id="product-gallery-template">
+        <ul class="thumb-list col-12 row ltr" type="none">
+            <li class="arrow left" @click="scroll('prev')" v-if="thumbs.length > 4">
+                <i class="rango-arrow-left fs24"></i>
+            </li>
+
+            <carousel-component
+                slides-per-page="4"
+                :id="galleryCarouselId"
+                pagination-enabled="hide"
+                navigation-enabled="hide"
+                add-class="product-gallery"
+                :slides-count="thumbs.length">
+
+                <slide :slot="`slide-${index}`" v-for="(thumb, index) in thumbs">
+                    <li
+                        @mouseover="changeImage({
+                            largeImageUrl: thumb.large_image_url,
+                            originalImageUrl: thumb.original_image_url,
+                        })"
+                        :class="`thumb-frame ${index + 1 == 4 ? '' : 'mr5'} ${thumb.large_image_url == currentLargeImageUrl ? 'active' : ''}`"
+                        >
+
+                        <div
+                            class="bg-image"
+                            :style="`background-image: url(${thumb.small_image_url})`">
+                        </div>
+                    </li>
+                </slide>
+            </carousel-component>
+
+            <li class="arrow right" @click="scroll('next')" v-if="thumbs.length > 4">
+                <i class="rango-arrow-right fs24"></i>
+            </li>
+        </ul>
+    </script>
+
     <script type="text/javascript">
         (() => {
             var galleryImages = @json($images);
@@ -152,7 +158,6 @@
 
     <script>
         $(document).ready(() => {
-
             /* waiting for the window to appear */
             let waitForEl = function(selector, callback) {
                 if (jQuery(selector).length) {
@@ -164,8 +169,11 @@
 
             /* positioning when .zoomWindow div available */
             waitForEl('.zoomWindow', function() {
+                let zoomContainer = $('.zoomContainer');
+                zoomContainer.css('z-index', 'unset');
+
                 if ($('body').hasClass("rtl")) {
-                    let widthOfImage = $('.zoomContainer').width();
+                    let widthOfImage = zoomContainer.width();
                     $('.zoomWindow').css('right', `${widthOfImage}px`);
                 }
             });

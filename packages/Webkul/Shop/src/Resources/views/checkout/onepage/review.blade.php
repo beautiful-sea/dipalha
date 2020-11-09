@@ -13,7 +13,10 @@
                 <div class="card-content">
                     <ul>
                         <li class="mb-10">
-                            {{ $billingAddress->first_name }} {{ $billingAddress->last_name }}
+                            {{ $billingAddress->company_name ?? '' }}
+                        </li>
+                        <li class="mb-10">
+                            <b>{{ $billingAddress->first_name }} {{ $billingAddress->last_name }}</b>
                         </li>
                         <li class="mb-10">
                             {{ $billingAddress->address1 }},<br/> {{ $billingAddress->state }}
@@ -41,7 +44,10 @@
                 <div class="card-content">
                     <ul>
                         <li class="mb-10">
-                            {{ $shippingAddress->first_name }} {{ $shippingAddress->last_name }}
+                            {{ $shippingAddress->company_name ?? '' }}
+                        </li>
+                        <li class="mb-10">
+                            <b>{{ $shippingAddress->first_name }} {{ $shippingAddress->last_name }}</b>
                         </li>
                         <li class="mb-10">
                             {{ $shippingAddress->address1 }},<br/> {{ $shippingAddress->state }}
@@ -72,7 +78,7 @@
 
             <div class="item mb-5" style="margin-bottom: 5px;">
                 <div class="item-image">
-                    <img src="{{ $productBaseImage['medium_image_url'] }}" />
+                    <img src="{{ $productBaseImage['medium_image_url'] }}"  alt=""/>
                 </div>
 
                 <div class="item-details">

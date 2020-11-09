@@ -18,7 +18,7 @@
                 <div class="page-title">
                     <h1>
                         <i class="icon angle-left-icon back-link"
-                           onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
+                           onclick="window.location = history.length > 1 ? document.referrer : '{{ route('admin.dashboard.index') }}'"></i>
 
                         {{ __('admin::app.catalog.products.edit-title') }}
                     </h1>
@@ -91,6 +91,16 @@
                                             array_push($validations, 'decimal');
                                         }
 
+                                        if ($attribute->type == 'file') {
+                                            $retVal = (core()->getConfigData('catalog.products.attribute.file_attribute_upload_size')) ? core()->getConfigData('catalog.products.attribute.file_attribute_upload_size') : '2048' ;
+                                            array_push($validations, 'size:' . $retVal);
+                                        }
+
+                                        if ($attribute->type == 'image') {
+                                            $retVal = (core()->getConfigData('catalog.products.attribute.image_attribute_upload_size')) ? core()->getConfigData('catalog.products.attribute.image_attribute_upload_size') : '2048' ;
+                                            array_push($validations, 'size:' . $retVal . '|mimes:bmp,jpeg,jpg,png,webp');
+                                        }
+
                                         array_push($validations, $attribute->validation);
 
                                         $validations = implode('|', array_filter($validations));
@@ -144,6 +154,12 @@
 
                                 @endforeach
 
+                                @if ($attributeGroup->name == 'Price')
+
+                                    @include ('admin::catalog.products.accordians.customer-group-price')
+
+                                @endif
+
                                 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.' . $attributeGroup->name . '.controls.after', ['product' => $product]) !!}
                             </div>
                         </accordian>
@@ -192,8 +208,8 @@
                 selector: 'textarea#description, textarea#short_description',
                 height: 200,
                 width: "100%",
-                plugins: 'image imagetools media wordcount save fullscreen code',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | removeformat | code',
+                plugins: 'image imagetools media wordcount save fullscreen code table lists link hr',
+                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor link hr | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent  | removeformat | code | table',
                 image_advtab: true
             });
         });

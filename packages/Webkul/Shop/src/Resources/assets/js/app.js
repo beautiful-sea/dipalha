@@ -1,19 +1,19 @@
 import $ from 'jquery';
 import Vue from 'vue';
-import VeeValidate from 'vee-validate';
+import VeeValidate, { Validator } from 'vee-validate';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
-import ja from 'vee-validate/dist/locale/ja';
-import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import axios from 'axios';
 import VueSlider from 'vue-slider-component';
 import accounting from 'accounting';
 import ImageSlider from './components/image-slider';
+import 'lazysizes';
 
 window.jQuery = window.$ = $;
 window.Vue = Vue;
 window.VeeValidate = VeeValidate;
 window.axios = axios;
+
 require("./bootstrap");
 require("ez-plus/src/jquery.ez-plus.js");
 
@@ -21,8 +21,6 @@ Vue.use(VeeValidate, {
     dictionary: {
         ar: ar,
         de: de,
-        ja: ja,
-        pt_BR:pt_BR
     },
     events: 'input|change|blur',
 });
@@ -42,7 +40,9 @@ $(document).ready(function () {
         el: "#app",
 
         data: {
-            modalIds: {}
+            modalIds: {},
+
+            show_loader: false
         },
 
         mounted: function () {
@@ -118,7 +118,17 @@ $(document).ready(function () {
 
             showModal(id) {
                 this.$set(this.modalIds, id, true);
+            },
+
+            showLoader() {
+                this.show_loader = true;
+            },
+
+            hideLoader() {
+                this.show_loader = false;
             }
         }
     });
+
+    window.app = app;
 });

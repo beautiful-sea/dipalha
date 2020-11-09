@@ -71,7 +71,9 @@ return [
         'no-results' => 'No Results Found',
         'page-title' => config('app.name') . ' - Search',
         'found-results' => 'Search Results Found',
-        'found-result' => 'Search Result Found'
+        'found-result' => 'Search Result Found',
+        'analysed-keywords' => 'Analysed Keywords',
+        'image-search-option' => 'Image Search Option'
     ],
 
     'reviews' => [
@@ -91,6 +93,19 @@ return [
     ],
 
     'customer' => [
+        'compare'           => [
+            'text'                  => 'Compare',
+            'compare_similar_items' => 'Compare Similar Items',
+            'add-tooltip'           => 'Add product to compare list',
+            'added'                 => 'Item successfully added to compare list',
+            'already_added'         => 'Item already added to compare list',
+            'removed'               => 'Item successfully removed from compare list',
+            'removed-all'           => 'All items successfully removed from compare list',
+            'empty-text'            => "You don't have any items in your compare list",
+            'product_image'         => 'Product Image',
+            'actions'               => 'Actions',
+        ],
+
         'signup-text' => [
             'account_exists' => 'Already have an account',
             'title' => 'Sign In'
@@ -163,6 +178,11 @@ return [
             'dashboard' => 'Edit Profile',
             'menu' => 'Menu',
 
+            'general' => [
+                'no' => 'No',
+                'yes' => 'Yes',
+            ],
+
             'profile' => [
                 'index' => [
                     'page-title' => 'Profile',
@@ -190,7 +210,7 @@ return [
 
                 'edit-profile' => [
                     'title' => 'Edit Profile',
-                    'page-title' => 'Edit Profile Form'
+                    'page-title' => 'Edit Profile'
                 ]
             ],
 
@@ -200,7 +220,7 @@ return [
                     'title' => 'Address',
                     'add' => 'Add Address',
                     'edit' => 'Edit',
-                    'empty' => 'You do not have any saved addresses here, please try to create it by clicking the link below',
+                    'empty' => 'You do not have any saved addresses here, please try to create it by clicking the add button.',
                     'create' => 'Create Address',
                     'delete' => 'Delete',
                     'make-default' => 'Make Default',
@@ -212,7 +232,7 @@ return [
                 ],
 
                 'create' => [
-                    'page-title' => 'Add Address Form',
+                    'page-title' => 'Add Address',
                     'company_name' => 'Company name',
                     'first_name' => 'First name',
                     'last_name' => 'Last name',
@@ -314,6 +334,8 @@ return [
                     'adjustment-refund' => 'Adjustment Refund',
                     'adjustment-fee' => 'Adjustment Fee',
                     'cancel-btn-title' => 'Cancel',
+                    'tracking-number' => 'Tracking Number',
+                    'cancel-confirm-msg' => 'Are you sure you want to cancel this order ?'
                 ]
             ],
 
@@ -326,6 +348,8 @@ return [
                 'error' => 'Cannot add product to wishlist due to unknown problems, please checkback later',
                 'add' => 'Item successfully added to wishlist',
                 'remove' => 'Item successfully removed from wishlist',
+                'add-wishlist-text'     => 'Add product to wishlist',
+                'remove-wishlist-text'  => 'Remove product from wishlist',
                 'moved' => 'Item successfully moved To cart',
                 'option-missing' => 'Product options are missing, so item can not be moved to the wishlist.',
                 'move-error' => 'Item cannot be moved to wishlist, Please try again later',
@@ -369,6 +393,7 @@ return [
         'layered-nav-title' => 'Shop By',
         'price-label' => 'As low as',
         'remove-filter-link-title' => 'Clear All',
+        'filter-to' => 'to',
         'sort-by' => 'Sort By',
         'from-a-z' => 'From A-Z',
         'from-z-a' => 'From Z-A',
@@ -393,6 +418,7 @@ return [
         'new' => 'New',
         'empty' => 'No products available in this category',
         'add-to-cart' => 'Add To Cart',
+        'book-now' => 'Book Now',
         'buy-now' => 'Buy Now',
         'whoops' => 'Whoops!',
         'quantity' => 'Quantity',
@@ -412,7 +438,10 @@ return [
         'your-customization' => 'Your Customization',
         'total-amount' => 'Total Amount',
         'none' => 'None',
-        'available' => 'Available'
+        'available-for-order' => 'Available for Order',
+        'settings' => 'Settings',
+        'compare_options' => 'Compare Options',
+        'wishlist-options' => 'Wishlist Options'
     ],
 
     // 'reviews' => [
@@ -457,6 +486,8 @@ return [
                 'success' => 'Item was successfully added to cart.',
                 'success-remove' => 'Item was removed successfully from the cart.',
                 'error-add' => 'Item cannot be added to cart, please try again later.',
+                'inactive' => 'An item is inactive and was removed from cart.',
+                'inactive-add' => 'Inactive item cannot be added to cart.',
             ],
             'quantity-error' => 'Requested quantity is not available.',
             'cart-subtotal' => 'Cart Subtotal',
@@ -474,6 +505,7 @@ return [
             'shipping' => 'Shipping',
             'payment' => 'Payment',
             'complete' => 'Complete',
+            'review' => 'Review',
             'billing-address' => 'Billing Address',
             'sign-in' => 'Sign In',
             'company-name' => 'Company Name',
@@ -571,11 +603,20 @@ return [
             'final-summary' => 'Thanks for showing your interest in our store we will send you tracking number once it shipped',
             'help' => 'If you need any kind of help please contact us at :support_email',
             'thanks' => 'Thanks!',
+
+            'comment' => [
+                'subject' => 'New comment added to your order #:order_id',
+                'dear' => 'Dear :customer_name',
+                'final-summary' => 'Thanks for showing your interest in our store',
+                'help' => 'If you need any kind of help please contact us at :support_email',
+                'thanks' => 'Thanks!',
+            ],
+
             'cancel' => [
                 'subject' => 'Order Cancel Confirmation',
                 'heading' => 'Order Cancelled',
                 'dear' => 'Dear :customer_name',
-                'greeting' => 'You Order with order id #:order_id placed on :created_at has been cancelled',
+                'greeting' => 'Your Order with order id :order_id placed on :created_at has been cancelled',
                 'summary' => 'Summary of Order',
                 'shipping-address' => 'Shipping Address',
                 'billing-address' => 'Billing Address',
@@ -601,9 +642,9 @@ return [
 
         'shipment' => [
             'heading' => 'Shipment #:shipment_id  has been generated for Order #:order_id',
-            'inventory-heading' => 'New shipment #:shipment_id had been generated for Order #:order_id',
+            'inventory-heading' => 'New shipment #:shipment_id has been generated for Order #:order_id',
             'subject' => 'Shipment for your order #:order_id',
-            'inventory-subject' => 'New shipment had been generated for Order #:order_id',
+            'inventory-subject' => 'New shipment has been generated for Order #:order_id',
             'summary' => 'Summary of Shipment',
             'carrier' => 'Carrier',
             'tracking-number' => 'Tracking Number',
@@ -624,6 +665,13 @@ return [
             'info' => 'You are receiving this email because we received a password reset request for your account',
             'reset-password' => 'Reset Password',
             'final-summary' => 'If you did not request a password reset, no further action is required',
+            'thanks' => 'Thanks!'
+        ],
+
+        'update-password' => [
+            'subject' => 'Password Updated',
+            'dear' => 'Dear :name',
+            'info' => 'You are receiving this email because you have updated your password.',
             'thanks' => 'Thanks!'
         ],
 

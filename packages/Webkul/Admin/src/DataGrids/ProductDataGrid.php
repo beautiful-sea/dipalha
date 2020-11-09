@@ -2,6 +2,8 @@
 
 namespace Webkul\Admin\DataGrids;
 
+use Webkul\Core\Models\Locale;
+use Webkul\Core\Models\Channel;
 use Webkul\Ui\DataGrid\DataGrid;
 use Illuminate\Support\Facades\DB;
 
@@ -17,23 +19,52 @@ class ProductDataGrid extends DataGrid
 
     protected $channel = 'all';
 
+    /** @var string[] contains the keys for which extra filters to render */
+    protected $extraFilters = [
+        'channels',
+        'locales',
+    ];
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->locale = request()->get('locale') ?? 'all';
-        
-        $this->channel = request()->get('channel') ?? 'all';
+        /* locale */
+        $this->locale = request()->get('locale') ?? app()->getLocale();
+
+        /* channel */
+        $this->channel = request()->get('channel') ?? (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
+
+        /* finding channel code */
+        if ($this->channel !== 'all') {
+            $this->channel = Channel::query()->find($this->channel);
+            $this->channel = $this->channel ? $this->channel->code : 'all';
+        }
     }
 
     public function prepareQueryBuilder()
     {
+        if ($this->channel === 'all') {
+            $whereInChannels = Channel::query()->pluck('code')->toArray();
+        } else {
+            $whereInChannels = [$this->channel];
+        }
+
+        if ($this->locale === 'all') {
+            $whereInLocales = Locale::query()->pluck('code')->toArray();
+        } else {
+            $whereInLocales = [$this->locale];
+        }
+
+        /* query builder */
         $queryBuilder = DB::table('product_flat')
             ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
             ->leftJoin('attribute_families', 'products.attribute_family_id', '=', 'attribute_families.id')
             ->leftJoin('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
             ->select(
-                'product_flat.product_id as product_id',
+                'product_flat.locale',
+                'product_flat.channel',
+                'product_flat.product_id',
                 'products.sku as product_sku',
                 'product_flat.name as product_name',
                 'products.type as product_type',
@@ -43,17 +74,10 @@ class ProductDataGrid extends DataGrid
                 DB::raw('SUM(DISTINCT ' . DB::getTablePrefix() . 'product_inventories.qty) as quantity')
             );
 
-        if ($this->locale !== 'all') {
-            $queryBuilder->where('locale', $this->locale);
-        } else {
-            $queryBuilder->whereNotNull('product_flat.name');
-        }
+        $queryBuilder->groupBy('product_flat.product_id', 'product_flat.locale', 'product_flat.channel');
 
-        if ($this->channel !== 'all') {
-            $queryBuilder->where('channel', $this->channel);
-        }
-
-        $queryBuilder->groupBy('product_flat.product_id');
+        $queryBuilder->whereIn('product_flat.locale', $whereInLocales);
+        $queryBuilder->whereIn('product_flat.channel', $whereInChannels);
 
         $this->addFilter('product_id', 'product_flat.product_id');
         $this->addFilter('product_name', 'product_flat.name');
@@ -119,7 +143,7 @@ class ProductDataGrid extends DataGrid
             'sortable'   => true,
             'searchable' => false,
             'filterable' => true,
-            'wrapper'    => function($value) {
+            'wrapper'    => function ($value) {
                 if ($value->status == 1) {
                     return trans('admin::app.datagrid.active');
                 } else {
@@ -144,7 +168,7 @@ class ProductDataGrid extends DataGrid
             'sortable'   => true,
             'searchable' => false,
             'filterable' => false,
-            'wrapper'    => function($value) {
+            'wrapper'    => function ($value) {
                 if (is_null($value->quantity)) {
                     return 0;
                 } else {
@@ -161,7 +185,7 @@ class ProductDataGrid extends DataGrid
             'method'    => 'GET',
             'route'     => 'admin.catalog.products.edit',
             'icon'      => 'icon pencil-lg-icon',
-            'condition' => function() {
+            'condition' => function () {
                 return true;
             },
         ]);
@@ -177,6 +201,13 @@ class ProductDataGrid extends DataGrid
 
     public function prepareMassActions()
     {
+        $this->addAction([
+            'title'  => trans('admin::app.datagrid.copy'),
+            'method' => 'GET',
+            'route'  => 'admin.catalog.products.copy',
+            'icon'   => 'icon copy-icon',
+        ]);
+
         $this->addMassAction([
             'type'   => 'delete',
             'label'  => trans('admin::app.datagrid.delete'),
