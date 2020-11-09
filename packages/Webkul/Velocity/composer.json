@@ -14,7 +14,9 @@
         }
     ],
 
-    "require": {},
+    "require": {
+        "cagartner/bagisto-correios": "9999999-dev"
+    },
     "autoload": {
         "psr-4": {
             "Webkul\\Velocity\\": "src/"

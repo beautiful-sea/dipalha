@@ -3,6 +3,7 @@ import Vue from 'vue';
 import VeeValidate, { Validator } from 'vee-validate';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
+import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import axios from 'axios';
 import VueSlider from 'vue-slider-component';
 import accounting from 'accounting';
@@ -21,6 +22,7 @@ Vue.use(VeeValidate, {
     dictionary: {
         ar: ar,
         de: de,
+        pt_BR:pt_BR
     },
     events: 'input|change|blur',
 });

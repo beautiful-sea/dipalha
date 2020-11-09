@@ -5,6 +5,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/index.css';
 import de from 'vee-validate/dist/locale/de';
 import ar from 'vee-validate/dist/locale/ar';
+import pt_BR from 'vee-validate/dist/locale/pt_BR';
 import VeeValidate, { Validator } from 'vee-validate';
 import axios from 'axios';
 import 'lazysizes';
@@ -23,6 +24,7 @@ Vue.use(VeeValidate, {
     dictionary: {
         ar: ar,
         de: de,
+        pt_BR:pt_BR
     }
 });
 

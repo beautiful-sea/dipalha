@@ -22,6 +22,7 @@
         "babenkoivan/elastic-scout-driver": "^1.1",
         "bagistobrasil/bagisto-product-social-share": "^0.1.2",
         "barryvdh/laravel-dompdf": "0.8.6",
+        "cagartner/bagisto-correios": "^0.2.1",
         "cagartner/bagisto-pagseguro": "^1.0",
         "doctrine/dbal": "2.9.2",
         "fideloper/proxy": "^4.2",

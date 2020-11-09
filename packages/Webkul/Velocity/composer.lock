@@ -1,0 +1,170 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "91d4de10339cbad7d925fd101980b7bf",
+    "packages": [
+        {
+            "name": "cagartner/bagisto-correios",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cagartner/bagisto-correios.git",
+                "reference": "2b817dc56b1f26390f381293a345c7bea190e3ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cagartner/bagisto-correios/zipball/2b817dc56b1f26390f381293a345c7bea190e3ad",
+                "reference": "2b817dc56b1f26390f381293a345c7bea190e3ad",
+                "shasum": ""
+            },
+            "require": {
+                "cagartner/phpquery": "0.9.11"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cagartner\\Correios\\Providers\\CorreiosServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cagartner\\Correios\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Gartner",
+                    "email": "contato@carlosgartner.com.br"
+                }
+            ],
+            "description": "Shipping Method for Correios",
+            "support": {
+                "issues": "https://github.com/cagartner/bagisto-correios/issues",
+                "source": "https://github.com/cagartner/bagisto-correios/tree/0.2.1"
+            },
+            "time": "2020-08-06T23:35:55+00:00"
+        },
+        {
+            "name": "cagartner/phpquery",
+            "version": "0.9.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cagartner/phpquery.git",
+                "reference": "efd7f8d32bf6d21d910f9374df91775df3639ddf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cagartner/phpquery/zipball/efd7f8d32bf6d21d910f9374df91775df3639ddf",
+                "reference": "efd7f8d32bf6d21d910f9374df91775df3639ddf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "sabberworm/php-css-parser": "8.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpQuery\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobiasz Cudnik",
+                    "email": "tobiasz.cudnik@gmail.com",
+                    "homepage": "https://github.com/TobiaszCudnik",
+                    "role": "Developer"
+                },
+                {
+                    "name": "didier Belot",
+                    "role": "Packager"
+                },
+                {
+                    "name": "Greg Payne",
+                    "role": "Packager"
+                }
+            ],
+            "description": "PHP5.3+ namespaced version of phpQuery with enhanced CSS support",
+            "homepage": "http://code.google.com/p/phpquery/",
+            "support": {
+                "source": "https://github.com/cagartner/phpquery/tree/0.9.11"
+            },
+            "time": "2019-10-25T13:34:48+00:00"
+        },
+        {
+            "name": "sabberworm/php-css-parser",
+            "version": "8.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
+                "reference": "d217848e1396ef962fb1997cf3e2421acba7f796"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/d217848e1396ef962fb1997cf3e2421acba7f796",
+                "reference": "d217848e1396ef962fb1997cf3e2421acba7f796",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "codacy/coverage": "^1.4",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sabberworm\\CSS": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raphael Schweikert"
+                }
+            ],
+            "description": "Parser for CSS Files written in PHP",
+            "homepage": "http://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+            "keywords": [
+                "css",
+                "parser",
+                "stylesheet"
+            ],
+            "support": {
+                "issues": "https://github.com/sabberworm/PHP-CSS-Parser/issues",
+                "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.3.1"
+            },
+            "time": "2020-06-01T09:10:00+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "cagartner/bagisto-correios": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

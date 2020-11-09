@@ -210,7 +210,7 @@ return [
             'new-customer' => 'Novo cliente',
             'customer-login' => 'Login do cliente',
             'registered-user' => 'Usuário registrado',
-            'your-email-address' => 'Seu endereço de email',
+            'your-email-address' => 'Seu e-mail',
             'form-login-text' => 'Se você possui uma conta, entre com seu endereço de e-mail.',
         ],
         'signup-form' => [
