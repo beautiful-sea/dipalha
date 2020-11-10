@@ -81,6 +81,7 @@
                                 <ul type="none" class="category-wrapper" v-if="rootCategoriesCollection.length > 0">
                                     <li v-for="(category, index) in rootCategoriesCollection">
                                         <a class="unset" :href="`${$root.baseUrl}/${category.slug}`">
+                                            <a class="unset" style="padding: 20px 150px 20px 0px;" :href="`${$root.baseUrl}/${category.slug}`">
                                             <div class="category-logo">
                                                 <img
                                                     class="category-icon"
@@ -90,7 +91,7 @@
                                             <span v-text="category.name"></span>
                                         </a>
 
-                                        <i class="rango-arrow-right" @click="toggleSubcategories(index, $event)"></i>
+{{--                                        <i class="rango-arrow-right" @click="toggleSubcategories(index, $event)"></i>--}}
                                     </li>
                                 </ul>
 
